@@ -19,6 +19,15 @@ export const UserForm = () => {
                 </form>
             </section>
         </main>
+        <footer>
+            <section className="info">
+                <a href=""><i class="bi bi-whatsapp"></i> WHATSAPP</a>
+                <a href=""><i class="bi bi-instagram"></i> INSTAGRAM</a>
+            </section>
+            <section className="easy">
+                <p>Producido por</p><img src='https://lh3.googleusercontent.com/29Z6d-M5XgTZQUIySfCKS73UKosvNP13auEb6pJq9AN8bxfzPrvFoKH4qLtqgVLkqJLJgQ=s85' alt="" />
+            </section>
+        </footer>
         
 
     </>
