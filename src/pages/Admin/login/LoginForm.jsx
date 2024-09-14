@@ -4,10 +4,11 @@ const LoginForm = () => {
     return (
         <>
             <form>
-                <input type="text" name="name" id="name" required placeholder="Ingresa tu nombre"/>
+                <input type="email" name="name" id="name" required placeholder="Ingresa tu email"/>
+                <input type="password" name="name" id="name" required placeholder="Ingresa tu contraseña"/>
+
                 <div>
-                    <button type="submit" >Cuenta individual</button>
-                    <button type="submit"> Cuenta compartida</button>
+                    <button type="submit" >Continuar</button>
                 </div>
             </form>
         </>
