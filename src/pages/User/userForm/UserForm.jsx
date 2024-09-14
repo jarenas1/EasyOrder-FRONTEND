@@ -1,3 +1,4 @@
+import { Form } from "./Form"
 import "./userForm.scss"
 
 export const UserForm = () => {
@@ -9,20 +10,13 @@ export const UserForm = () => {
         <main>
             <h1>Escribe tu nombre</h1>
             <section>
-                <form>
-                    <input type="text" name="" id="" />
-                    <div>
-                        <button>Cuenta individual</button>
-                        <button>Cuenta compartida</button>
-                    </div>
-                    
-                </form>
+                <Form/>
             </section>
         </main>
         <footer>
             <section className="info">
-                <a href=""><i class="bi bi-whatsapp"></i> WHATSAPP</a>
-                <a href=""><i class="bi bi-instagram"></i> INSTAGRAM</a>
+                <a href=""><i className="bi bi-whatsapp"></i> WHATSAPP</a>
+                <a href=""><i className="bi bi-instagram"></i> INSTAGRAM</a>
             </section>
             <section className="easy">
                 <p>Producido por</p><img src='https://lh3.googleusercontent.com/29Z6d-M5XgTZQUIySfCKS73UKosvNP13auEb6pJq9AN8bxfzPrvFoKH4qLtqgVLkqJLJgQ=s85' alt="" />
