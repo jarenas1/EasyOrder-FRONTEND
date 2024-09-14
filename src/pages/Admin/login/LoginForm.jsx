@@ -4,10 +4,10 @@ const LoginForm = () => {
     return (
         <>
             <form>
-                <input type="text" name="name" id="name" required placeholder="Ingresa tu nombre" onChange={onInputChange}/>
+                <input type="text" name="name" id="name" required placeholder="Ingresa tu nombre"/>
                 <div>
-                    <button type="submit" onClick={(e)=>changeStatus(e)}>Cuenta individual</button>
-                    <button type="submit" onClick={(e)=>changeStatus(e)}> Cuenta compartida</button>
+                    <button type="submit" >Cuenta individual</button>
+                    <button type="submit"> Cuenta compartida</button>
                 </div>
             </form>
         </>

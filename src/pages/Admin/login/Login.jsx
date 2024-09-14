@@ -1,5 +1,6 @@
 import React from 'react'
-
+import LoginForm from './LoginForm'
+import './login.scss'
 const Login = () => {
     return (
         <>
@@ -9,7 +10,7 @@ const Login = () => {
             <main>
                 <h1>Escribe tu nombre</h1>
                 <section>
-                    <Form/>
+                    <LoginForm/>
                 </section>
             </main>
             <footer>
