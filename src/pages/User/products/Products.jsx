@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import useFetch from '../../../api/apiFetch.js'
-import ProductList from '../../../components/Products/ProductList.jsx'
-import ProductPagination from '../../../components/Products/productPagination.jsx'
+import ProductList from '../../../components/Products/productList/ProductList.jsx'
+import ProductPagination from '../../../components/Products/productPagination/ProductPagination.jsx'
 import	"./products.scss"
 
 function ShowProducts() {
@@ -9,7 +9,7 @@ function ShowProducts() {
     const [searchItems, setsearchItems] = useState("")
     const [filter, setFilter] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 4;
+    const productsPerPage = 9;
     
     useEffect(() => {
          if (data && Array.isArray(data)) {
@@ -40,11 +40,6 @@ function ShowProducts() {
 
     return (
         <>
-            <nav className='nav'>
-                <figure className='nav__figure'>
-                    <img src="https://www.google.https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShTbKYgWNaJmUPwDdKBNUtjDiKJzY5SFvUoQ&s/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Flogia&psig=AOvVaw0wdp23MoMbcO9hU43T-ZJg&ust=1726444579614000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMiVzPjSw4gDFQAAAAAdAAAAABAJ" alt="" />
-                </figure>
-            </nav>
             <header className='header'>
                 
                 <div className='header__text'>
@@ -55,9 +50,11 @@ function ShowProducts() {
         
             <section className='section-products'>
                 <div className='section-products__text'>
-                    <h2 className='color-primary'>Producto</h2>
+                    <h2 className='color-primary'>Productos</h2>
                    
-                    <button className='section-products__btn'>Carrito</button>
+                    <a href="" className='section-products__btn'>
+                        <i className="bi bi-cart-fill"></i>
+                    </a>
                 </div>
                 <div className='section-products__search'>
                      <input type="text" placeholder='buscar' value={searchItems} onChange={(e) => {
@@ -67,13 +64,13 @@ function ShowProducts() {
                 
 
             </section>
-            <section>
+           <ProductList data={currentProducts} />
+            <ProductPagination totalPages = {totalPages} setCurrentPage = {handlePageChange} currentPage = {currentPage} ></ProductPagination>
                 
                 
-                <ProductList data={currentProducts} />
-                <ProductPagination totalPages = {totalPages} setCurrentPage = {handlePageChange} currentPage = {currentPage} ></ProductPagination>
+                
             
-            </section>
+            
         </>
   )
 }

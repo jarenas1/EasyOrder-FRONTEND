@@ -1,0 +1,27 @@
+.section-showProducts__article{
+    flex: 0 0 280px;
+
+
+}
+
+.section-showProducts__figure{
+
+    width: 100%;
+    border-radius: 40px;
+    overflow: hidden;
+    margin-bottom: 15px;
+
+}
+
+.section-showProducts__body{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+    color: #ffff;
+}
+
+.section-showProducts__body a i{
+    font-size: 20px;
+}

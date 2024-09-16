@@ -1,4 +1,4 @@
-import React from 'react'
+import "./productPagination.scss"
 
 function ProductPagination({totalPages, setCurrentPage, currentPage}) {
 
@@ -15,7 +15,7 @@ function ProductPagination({totalPages, setCurrentPage, currentPage}) {
         }
     };
   return (
-    <div>
+    <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>Anterior</button>
         <span>Página {currentPage} de {totalPages}</span>
         <button onClick={handleNextPage} disabled={currentPage === totalPages}>Siguiente</button>
