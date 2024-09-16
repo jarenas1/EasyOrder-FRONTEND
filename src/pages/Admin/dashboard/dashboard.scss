@@ -189,3 +189,195 @@ section{
             }
     }
 }
+
+@media(max-width: 1200px) {
+    section{
+        table{
+            width: 100%;
+        }
+    }    
+}
+
+@media(max-width: 830px) {
+    section{
+        table{
+            tbody{
+                tr{
+                    td{
+                        font-size: 15px;
+                        font-weight: 600;
+                        margin: 10px ;
+                        
+                        .edit-btn {
+                            margin: 20px 0px;
+                        }
+                            .delete-btn {
+                            margin: 20px 0px;
+                            padding-left: 5px;
+                            padding-right: 5px;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }    
+
+
+@media(max-width: 660px) {
+    header{
+        h2{
+            font-size: 25px;
+        }
+    }
+}
+
+@media(max-width: 632px) {
+
+    header{
+        img{
+            width: 100px;
+            border-radius: 100px;
+            margin-left: 30px;
+        }
+    
+        h2{
+            position: absolute;
+            top: 135px;
+            text-align: center;
+            font-size: 20px;
+            margin-left: 2%;
+        }
+    
+        button{
+            margin-right: 30px;
+            width: 120px;
+        }
+    }
+
+    section{
+        table{
+            tbody{
+                tr{
+                    td{
+                        
+                        .edit-btn {
+                            margin: 5px 0px;
+                            height: 30px;
+                            }
+                            .delete-btn {
+                                margin: 5px 0px;
+                                height: 30px;
+                            }
+                        }
+                    }
+                }
+        }
+    }
+}
+
+@media(max-width: 575px) {
+    main{
+        section{
+            article{
+                .button-left{
+                    padding: 15px 35px;
+                }
+                .button-center{
+                    padding: 15px 35px;
+                }
+                .button-right{
+                    padding: 15px 35px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 450px) {
+    section{
+        table{
+            tbody{
+                tr{
+                    td{
+                        font-size: 13.5px;
+                        .edit-btn {
+                            margin: 5px 0px;
+                            height: 30px;
+                            font-size: 13px;
+                            }
+                            .delete-btn {
+                                margin: 5px 0px;
+                                height: 30px;
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+        }
+    }
+}
+
+@media(max-width: 415px){
+    main{
+        section{
+            article{
+                .button-left{
+                    padding: 15px 25px;
+                }
+                .button-center{
+                    padding: 15px 25px;
+                }
+                .button-right{
+                    padding: 15px 25px;
+                }
+            }
+        }
+    }
+    section{
+        table{
+            tbody{
+                tr{
+                    td{
+                        font-size: 12px;
+                        .edit-btn {
+                            margin: 5px 0px;
+                            height: 30px;
+                            font-size: 10px;
+                            padding: 9px;
+                            }
+                            .delete-btn {
+                                margin: 5px 0px;
+                                height: 30px;
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+        }
+    }
+}
+
+@media(max-width: 400px){
+    header{
+        img{
+            width: 80px;
+            border-radius: 100px;
+            margin-left: 30px;
+        }
+    
+        h2{
+            position: absolute;
+            top: 135px;
+            text-align: center;
+            font-size: 18px;
+            margin-left: 2%;
+        }
+    
+        button{
+            margin-right: 30px;
+            width: 100px;
+        }
+    }
+}

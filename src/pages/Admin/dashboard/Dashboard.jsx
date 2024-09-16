@@ -1,5 +1,8 @@
 import { CrudButton } from '../../../components/CrudButton'
 import { TableMesas } from '../../../components/TableMesas'
+import { TableOrders } from '../../../components/TableOrders'
+import { TableProducts } from '../../../components/TableProducts'
+import { TableWaiters } from '../../../components/TableWaiters'
 import './dashboard.scss'
 
 export  const Dashboard = () => {
@@ -18,7 +21,7 @@ export  const Dashboard = () => {
         <CrudButton/>
         </section>
         {/* CRUD */}
-        <TableMesas/>
+        <TableProducts/>
       </main>
     </>
   )
