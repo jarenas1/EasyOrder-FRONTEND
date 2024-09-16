@@ -1,3 +1,4 @@
+import { CrudButton } from '../../../components/CrudButton'
 import { TableMesas } from '../../../components/TableMesas'
 import './dashboard.scss'
 
@@ -14,11 +15,7 @@ export  const Dashboard = () => {
         <h1>Panel de control</h1>
         {/* BUTTON TO SELECT THE CRUD */}
         <section>
-            <article>
-                <p id='mesas' className='button-left selected-btn'  href="">Mesas</p>
-                <p id='productos' className='button-center' href="">Productos</p>
-                <p id='meseros' className='button-right' href="">Meseros</p>
-            </article>
+        <CrudButton/>
         </section>
         {/* CRUD */}
         <TableMesas/>
