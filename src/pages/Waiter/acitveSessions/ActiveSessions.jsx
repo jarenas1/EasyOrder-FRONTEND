@@ -1,4 +1,5 @@
 import { OrderButton } from '../../../components/OrderButton'
+import { Foot } from '../../../components/Foot'
 import './activeSessions.scss'
 
 export const ActiveSessions = () => {
@@ -32,7 +33,7 @@ export const ActiveSessions = () => {
             <td>
               <OrderButton/>
             </td>
-            <td><button class="orden-btn">Ver orden</button></td>
+            <td><button className="orden-btn">Ver orden</button></td>
           </tr>
           <tr>
             <td>1229232</td>
@@ -40,7 +41,7 @@ export const ActiveSessions = () => {
             <td>
               <OrderButton/>
             </td>
-            <td><button class="orden-btn">Ver orden</button></td>
+            <td><button className="orden-btn">Ver orden</button></td>
           </tr>
         </tbody>
     </table>
@@ -48,8 +49,7 @@ export const ActiveSessions = () => {
         </section>
       </main>
       <footer>
-        <p>Producido por:</p>
-        <img src="" alt="" />
+        <Foot/>
       </footer>
     </>
   )
