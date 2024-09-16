@@ -3,7 +3,7 @@
 
 $background-color: #1C1C1C;
 $button-color: #E01F1F;
-$button-yellow:#D5D824;
+$button-yellow:#a3a606;
 $button-blue: #064AF8;
 $font-color: #FFFF;
 $light-gray: #D9D9D9;
@@ -16,4 +16,93 @@ body{
     font-family: "Roboto", sans-serif;
     color: $font-color;
 }
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+    img{
+        width: 120px;
+        border-radius: 100px;
+        margin-left: 50px;
+        margin-top: 30px;
+    }
+
+    h2{
+        text-align: center;
+        font-size: 30px;
+        margin-left: 2%;
+    }
+    .button-red{
+        margin-right: 50px;
+        background-color: $button-color;
+        width: 140px;
+        height: 40px;
+        border: none;
+        border-radius: 30px;
+        color: $font-color;
+        font-weight: bold;
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.9); /* Efecto de resplandor */
+        transition: all 0.1s ease-in-out;
+
+        &:hover{
+            scale: 1.04;
+        }
+    }
+
+    main{
+        margin-top: 10vh;
+        h1{
+            text-align: center;
+            font-size: 45px;
+        }
+        section{
+            display: flex;
+            justify-content: space-around;
+        }
+        section{
+            margin-top: 3vh;
+            table{
+                width: 80%;
+                border-collapse: collapse;
+                text-align: center;
+                margin-top: 20px;
+                th, td{
+                    padding: 10px;
+                    border: 2px solid $light-gray;
+                }
+                .button-toggle{
+                    margin: 20px 0px;
+                    height: 40px;
+                    border: none;
+                    border-radius: 30px;
+                    color: $font-color;
+                    font-weight: bold;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    transition: all 0.1s ease-in-out;
+
+                    &:hover{
+                        scale: 1.04;
+                    }
+                }
+            }
+            .orden-btn{
+                background-color: $button-blue;
+                    height: 40px;
+                    border: none;
+                    border-radius: 30px;
+                    color: $font-color;
+                    font-weight: bold;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    transition: all 0.1s ease-in-out;
+
+                    &:hover{
+                        scale: 1.04;
+                    }
+            }
+        }
+    }
 
