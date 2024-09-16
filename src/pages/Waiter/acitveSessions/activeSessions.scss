@@ -22,7 +22,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+
     img{
         width: 120px;
         border-radius: 100px;
@@ -34,7 +34,8 @@ header{
         font-size: 30px;
         margin-left: 2%;
     }
-    .button-session{
+
+    button{
         margin-right: 50px;
         background-color: $button-color;
         width: 140px;
@@ -50,6 +51,7 @@ header{
             scale: 1.04;
         }
     }
+}
 
     main{
         margin-top: 10vh;
@@ -168,6 +170,16 @@ header{
         }
     }
     
+
+    @media(max-width: 1000px) {
+        main{
+            section{
+                table{
+                    width: 100%;
+                }
+            }
+        }
+    }
 
     @media(max-width: 1000px) {
         main{

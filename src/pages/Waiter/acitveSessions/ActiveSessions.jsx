@@ -9,7 +9,7 @@ export const ActiveSessions = () => {
       <header>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX2XwnyPtF7Hz-ih0upJkh68hDDA03NbK-Ag&s" alt="" />
         <h2>Nombre del mesero</h2>
-        <button className='button-session'>Cerrar sesion</button>
+        <button>Cerrar sesion</button>
       </header>
       <main>
         <h1>Pedidos</h1>
