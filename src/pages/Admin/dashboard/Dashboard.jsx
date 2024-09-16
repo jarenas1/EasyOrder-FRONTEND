@@ -18,6 +18,9 @@ export  const Dashboard = () => {
             </article>
         </section>
         <section>
+            <button>
+                Añadir
+            </button>
             <table>
                 <thead>
                     <tr>
