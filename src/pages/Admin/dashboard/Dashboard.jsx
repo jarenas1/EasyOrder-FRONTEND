@@ -1,3 +1,4 @@
+import { TableMesas } from '../../../components/TableMesas'
 import './dashboard.scss'
 
 export  const Dashboard = () => {
@@ -8,57 +9,19 @@ export  const Dashboard = () => {
         <h2>Nombre del admin</h2>
         <button>Cerrar sesion</button>
       </header>
+
       <main>
         <h1>Panel de control</h1>
+        {/* BUTTON TO SELECT THE CRUD */}
         <section>
             <article>
-                <p id='mesas' className='button-left' href="">Mesas</p>
+                <p id='mesas' className='button-left selected-btn'  href="">Mesas</p>
                 <p id='productos' className='button-center' href="">Productos</p>
-                <a id='meseros' className='button-right' href="">Meseros</a>
+                <p id='meseros' className='button-right' href="">Meseros</p>
             </article>
         </section>
-        <section>
-            <button>
-                Añadir
-            </button>
-            <table>
-                <thead>
-                    <tr>
-                    <th>ID</th>
-                    <th>Numero</th>
-                    <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <td>1229232asds021a</td>
-                    <td>12</td>
-                    <td>
-                        <button class="edit-btn">Editar</button>
-                        <button class="delete-btn">Eliminar</button>
-                    </td>
-                    </tr>
-
-                    <tr>
-                    <td>1229232asds021a</td>
-                    <td>12</td>
-                    <td>
-                        <button class="edit-btn">Editar</button>
-                        <button class="delete-btn">Eliminar</button>
-                    </td>
-                    </tr>
-
-                    <tr>
-                    <td>1229232asds021a</td>
-                    <td>12</td>
-                    <td>
-                        <button class="edit-btn">Editar</button>
-                        <button class="delete-btn">Eliminar</button>
-                    </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        {/* CRUD */}
+        <TableMesas/>
       </main>
     </>
   )
