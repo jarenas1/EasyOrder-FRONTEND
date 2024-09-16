@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./productsCard.scss"
-function ProductsCard({name, price, img}) {
+import {CartContext} from '../../../context/CartContext'
+
+function ProductsCard({ product }) {
+  const { addToCart } = useContext(CartContext)
+  
+  const {name, price, img} = product
   return (
     <article className='section-showProducts__article'>
         <figure className='section-showProducts__figure'>
@@ -9,7 +14,10 @@ function ProductsCard({name, price, img}) {
         <div className='section-showProducts__body'>
             <h3>{name}</h3>
             <p>$ {price}</p>
-            <a href="">
+            <a href="" onClick={(e) => {
+               e.preventDefault()
+                addToCart(product)
+            }}>
                 <i className="bi bi-cart-plus"></i>
             </a>
         </div>

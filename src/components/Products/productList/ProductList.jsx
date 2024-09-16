@@ -5,10 +5,10 @@ import "./productList.scss"
 function ProductList({ data }) {
     
   return (
-    <section className='section-showProducts container'>
+    <section className='section-showProducts'>
       {
         data && data.map((ele, i) => {
-          return <ProductsCard key={i} name = {ele.name} price = {ele.price} img = {ele.img}></ProductsCard>
+          return <ProductsCard key={i} product= {ele} ></ProductsCard>
         })
       }
      </section>

@@ -1,0 +1,26 @@
+.serctio-card-container__figure{
+    width: 80px;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.serctio-card-container__info{
+    display: flex;
+    
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    padding: 20px 0;
+
+}
+
+.serctio-card-container__info::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
