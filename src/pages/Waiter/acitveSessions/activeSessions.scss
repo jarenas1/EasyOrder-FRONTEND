@@ -34,7 +34,7 @@ header{
         font-size: 30px;
         margin-left: 2%;
     }
-    .button-red{
+    .button-session{
         margin-right: 50px;
         background-color: $button-color;
         width: 140px;
@@ -60,7 +60,23 @@ header{
         section{
             display: flex;
             justify-content: space-around;
+
+            .button-red{
+                background-color: $button-color;
+                width: 140px;
+                height: 40px;
+                border: none;
+                border-radius: 30px;
+                color: $font-color;
+                font-weight: bold;
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.9); /* Efecto de resplandor */
+                transition: all 0.1s ease-in-out;
+        
+                &:hover{
+                    scale: 1.04;
+                }
         }
+    }
         section{
             margin-top: 3vh;
             table{

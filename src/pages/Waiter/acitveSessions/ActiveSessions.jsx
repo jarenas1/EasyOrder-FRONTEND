@@ -1,6 +1,7 @@
 import { OrderButton } from '../../../components/OrderButton'
 import { Foot } from '../../../components/Foot'
 import './activeSessions.scss'
+import { TableOrders } from '../../../components/TableOrders'
 
 export const ActiveSessions = () => {
   return (
@@ -8,7 +9,7 @@ export const ActiveSessions = () => {
       <header>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX2XwnyPtF7Hz-ih0upJkh68hDDA03NbK-Ag&s" alt="" />
         <h2>Nombre del mesero</h2>
-        <button className='button-red'>Cerrar sesion</button>
+        <button className='button-session'>Cerrar sesion</button>
       </header>
       <main>
         <h1>Pedidos</h1>
@@ -17,35 +18,7 @@ export const ActiveSessions = () => {
           <button className='button-red'>ver finalizados</button>
         </section>
         <section>
-          <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Mesa</th>
-            <th>Acciones</th>
-            <th>Ver Orden</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1229232</td>
-            <td>12</td>
-            <td>
-              <OrderButton/>
-            </td>
-            <td><button className="orden-btn">Ver orden</button></td>
-          </tr>
-          <tr>
-            <td>1229232</td>
-            <td>12</td>
-            <td>
-              <OrderButton/>
-            </td>
-            <td><button className="orden-btn">Ver orden</button></td>
-          </tr>
-        </tbody>
-    </table>
-
+            <TableOrders/>
         </section>
       </main>
       <footer>
