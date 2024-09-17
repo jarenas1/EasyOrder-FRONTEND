@@ -1,4 +1,4 @@
-import { CrudButton } from '../../../components/CrudButton'
+import { CrudButton } from '../../../components/crudButton/CrudButton'
 import './dashboard.scss'
 import React from 'react'
 

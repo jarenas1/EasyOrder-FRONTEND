@@ -26,7 +26,7 @@ export default function useFetch(url, options) {
 
         }
         fetchApi()
-    },[])
+    },[]);
     return {
         data,
         error,

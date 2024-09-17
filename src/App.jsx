@@ -12,7 +12,7 @@ function App() {
         <NavBar />
         <main >
           <AppRoutes/>
-         </main>
+        </main>
         <Footer/>
       </Router>
     </>
