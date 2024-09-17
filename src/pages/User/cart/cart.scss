@@ -1,6 +1,22 @@
-$background-color: #1C1C1C;
-$button-color: #E01F1F;
-$button-yellow:#D5D824;
-$button-blue: #064AF8;
-$font-color: #FFFF;
-$light-gray: #D9D9D9
+.section-cart h2{
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    padding-bottom: 40px;
+
+
+}
+.section-cart a{
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    
+    
+}
+.serctio-card-container{
+    display: flex;
+    flex-direction: column;
+    
+    
+    background-color: #d9d9d9;
+}

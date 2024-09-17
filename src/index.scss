@@ -33,6 +33,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $background-color;
+  overflow-x: hidden ;
 }
 
 
@@ -76,6 +77,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  transition: .4s transform;
 }
 
 
@@ -84,6 +86,7 @@ img {
  
   margin: 0 auto;
   max-width: 1400px;
+  width: 90%;
   
 }
 
@@ -93,4 +96,5 @@ img {
   color: $font-color;
 }
 
-/* Write your CSS code here */
+
+

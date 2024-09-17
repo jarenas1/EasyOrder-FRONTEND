@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import useFetch from '../../../api/apiFetch.js'
 import ProductList from '../../../components/Products/productList/ProductList.jsx'
 import ProductPagination from '../../../components/Products/productPagination/ProductPagination.jsx'
 import	"./products.scss"
+import { CartContext } from '../../../context/CartContext'
+import { useNavigate } from 'react-router-dom'
 
 function ShowProducts() {
+    
     const { data, loading, error } = useFetch("http://localhost:3000/products")
     const [searchItems, setsearchItems] = useState("")
     const [filter, setFilter] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 9;
+    const navigate = useNavigate();
     
     useEffect(() => {
          if (data && Array.isArray(data)) {
@@ -22,7 +26,7 @@ function ShowProducts() {
                 setCurrentPage(1);
             }
         }
-    }, [data, searchItems])
+    }, [data, searchItems, currentPage])
     
 
 
@@ -37,13 +41,15 @@ function ShowProducts() {
             setCurrentPage(page);
         }
     };
-
+    const handleCartClick = (e) => {
+        e.preventDefault()
+        navigate('/cart'); 
+    };
     return (
         <>
             <header className='header'>
-                
                 <div className='header__text'>
-                    <h1 className='color-primary'>La logia</h1>
+                    <h1 className='color-primary'>La Logia</h1>
                     <p className='color-primary'>𝘚𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘊𝘜𝘓𝘛𝘜𝘙𝘈, 𝘴𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘐𝘋𝘌𝘖𝘓𝘖𝘎𝘐́𝘈, 𝘴𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘋𝘖𝘊𝘛𝘙𝘐𝘕𝘈…</p>
                 </div>
             </header>
@@ -52,20 +58,31 @@ function ShowProducts() {
                 <div className='section-products__text'>
                     <h2 className='color-primary'>Productos</h2>
                    
-                    <a href="" className='section-products__btn'>
+                    <a href="" className='section-products__btn' onClick={handleCartClick}>
                         <i className="bi bi-cart-fill"></i>
                     </a>
                 </div>
                 <div className='section-products__search'>
-                     <input type="text" placeholder='buscar' value={searchItems} onChange={(e) => {
+                     <input type="text" placeholder='Buscar' value={searchItems} onChange={(e) => {
                         setsearchItems(e.target.value)
                     }} />
                 </div>
                 
 
             </section>
-           <ProductList data={currentProducts} />
-            <ProductPagination totalPages = {totalPages} setCurrentPage = {handlePageChange} currentPage = {currentPage} ></ProductPagination>
+            {filter.length === 0 ? (
+                <p className='no-results'>La búsqueda de «{ searchItems }» no arrojó coincidencias</p>
+            ) : (
+                <>
+                    <ProductList data={currentProducts} />
+                    <ProductPagination
+                        totalPages={totalPages}
+                        setCurrentPage={handlePageChange}
+                        currentPage={currentPage}
+                    />
+                </>
+            )}
+           
                 
                 
                 
