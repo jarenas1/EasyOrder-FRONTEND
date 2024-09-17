@@ -53,13 +53,13 @@ header{
     }
 }
 
-    main{
+    .orders-container{
         margin-top: 10vh;
         h1{
             text-align: center;
             font-size: 45px;
         }
-        section{
+        article{
             display: flex;
             justify-content: space-around;
 
@@ -79,7 +79,7 @@ header{
                 }
         }
     }
-        section{
+        article{
             margin-top: 3vh;
             table{
                 width: 80%;
@@ -124,53 +124,6 @@ header{
         }
     }
 
-    footer{
-        position: absolute;
-        top: 90VH;
-        display: flex;
-        width:  100%;
-        justify-content: space-evenly;
-    
-        .info{
-            display: flex;
-            justify-content: flex-start;
-            gap: 30px;
-            margin-left: 50px;
-    
-            a{ display: flex;
-                text-decoration: none;
-                align-items: center;
-                color: $light-gray;
-                font-size: 20px;
-                gap: 10px;
-    
-                &:hover{
-                    color: $font-color;
-                }
-    
-                i{
-                    font-size: 30px;
-                }
-            }
-        }
-    
-        .easy{
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-right: 50px;
-            gap: 5px;
-    
-            p{
-                color: $light-gray;
-            }
-            img{
-                width: 35px;
-            }
-        }
-    }
-    
-
     @media(max-width: 1000px) {
         main{
             section{
@@ -208,21 +161,6 @@ header{
             button{
                 margin-right: 30px;
                 width: 120px;
-            }
-        }
-    }
-
-    @media(max-width: 650px) {
-        footer{
-            flex-direction: column;
-    
-            .info{
-                justify-content: center;
-                margin-left: 0px;
-            }
-            .easy{
-                justify-content: center;
-                margin-right: 0px;
             }
         }
     }
