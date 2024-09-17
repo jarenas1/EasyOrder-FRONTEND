@@ -1,4 +1,4 @@
-//import { OrderButton } from "./OrderButton"
+import { OrderButton } from "./OrderButton"
 
 export const TableOrders = () => {
   return (
