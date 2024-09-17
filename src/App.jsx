@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6ba54de (Add some dependencies)
 import NavBar from './components/navBar/NavBar'
 import Footer from './components/footer/Footer'
 import {BrowserRouter as Router} from 'react-router-dom'
