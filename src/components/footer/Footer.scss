@@ -1,6 +1,5 @@
 @import "../../index.scss";
 .footer{
-    
     padding: 80px 60px 30px ;
     
 }
@@ -23,10 +22,11 @@ a{
 }
 .footer-section{
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
+
     
 }
 
@@ -43,6 +43,8 @@ a{
     gap: 10px;
     align-items: center;
     
+    width: 100%;
+    
 }
 
 .footer-section__info figure{
@@ -53,3 +55,17 @@ a{
 
 }
 
+
+@media screen and (max-width: 568px){
+     html{
+        font-size: 12px;
+     }
+    .footer-section{
+        
+        justify-content:center;
+      
+
+    
+    }
+
+}

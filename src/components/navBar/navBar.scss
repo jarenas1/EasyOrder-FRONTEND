@@ -1,12 +1,15 @@
 @import url("../../index.scss");
 .nav{
     padding: 20px 40px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
  
 }
 
 .nav__figure{
     
-    width: 100px;
+    width: 80px;
     border-radius: 50%;
     overflow: hidden;
 }

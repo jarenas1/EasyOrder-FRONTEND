@@ -1,17 +1,26 @@
 .section-showProducts__article{
-    flex: 0 0 280px;
+    max-width: 280px;
 
 
 }
 
 .section-showProducts__figure{
 
-    width: 100%;
+    max-width: 100%;
     border-radius: 40px;
     overflow: hidden;
     margin-bottom: 15px;
+    transition: .5s all;
+
 
 }
+.section-showProducts__figure img:hover{
+
+    transform: scale(1.1);
+
+
+}
+
 
 .section-showProducts__body{
     display: flex;
@@ -24,4 +33,12 @@
 
 .section-showProducts__body a i{
     font-size: 20px;
+}
+
+@media (max-width: 450px) {
+    .section-showProducts__article{
+        max-width: 150px;
+
+
+    }
 }
