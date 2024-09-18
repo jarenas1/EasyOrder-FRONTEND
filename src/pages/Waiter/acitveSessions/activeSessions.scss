@@ -58,6 +58,7 @@ body{
         h1{
             text-align: center;
             font-size: 45px;
+            margin-bottom: 8vh;
         }
         article{
             display: flex;
@@ -82,6 +83,7 @@ body{
         article{
             margin-top: 3vh;
             table{
+                border-radius: 10px;
                 width: 80%;
                 border-collapse: collapse;
                 margin-top: 30px;
@@ -100,9 +102,9 @@ body{
                     margin: 20px 0px;
                     height: 40px;
                     border: none;
-                    border-radius: 30px;
+                    border-radius: 8px;
                     color: $font-color;
-                    font-weight: bold;
+                    // font-weight: bold;
                     padding-left: 15px;
                     padding-right: 15px;
                     transition: all 0.1s ease-in-out;
@@ -116,9 +118,9 @@ body{
                 background-color: $button-blue;
                     height: 40px;
                     border: none;
-                    border-radius: 30px;
+                    border-radius: 8px;
                     color: $font-color;
-                    font-weight: bold;
+                    // font-weight: 500;
                     padding-left: 15px;
                     padding-right: 15px;
                     transition: all 0.1s ease-in-out;
