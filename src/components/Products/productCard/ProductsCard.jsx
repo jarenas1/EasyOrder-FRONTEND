@@ -12,7 +12,7 @@ function ProductsCard({ product }) {
             <img src={img} alt="" />
         </figure>
         <div className='section-showProducts__body'>
-            <h3>{name}</h3>
+            <h3>{name.toUpperCase()}</h3>
             <p>$ {price}</p>
             <a href="" onClick={(e) => {
                e.preventDefault()

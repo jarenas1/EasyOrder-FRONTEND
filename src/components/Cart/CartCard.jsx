@@ -1,6 +1,8 @@
 import "./cartCard.scss"
-
-function CartCard({products}) {
+import {CartContext} from '../../context/CartContext'
+import { useContext } from "react"
+function CartCard({ products }) {
+    const { removeFromCart } = useContext(CartContext)
     return (<>
         {
             products.map(ele => {
@@ -10,11 +12,14 @@ function CartCard({products}) {
                             <img src={ele.img} alt="" />
                         </figure>
                         <p>{ele.name.toUpperCase()}</p>
-                        <p>Units</p>
-                        <p>{ele.price}</p>
+                        <p>{ele.quantity }</p>
+                        <p>${ele.totalPrice}</p>
+                        <button className="btn__eliminar" onClick={() => {
+                            removeFromCart(ele.id)
+                        }}>
+                            <i class="bi bi-x-lg"></i>
+                        </button>
                     </div>
-                    
-                    
                     </article >
             })
         }
