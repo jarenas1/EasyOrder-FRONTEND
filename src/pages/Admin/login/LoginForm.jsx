@@ -19,13 +19,24 @@ export const LoginForm = () => {
                 return;
         }
     }
-
+//juan@gmail.com
     //Check if the inputs are valid PONER ACA VALIDACIONNNNNNNN !!!!!!!!
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault()
         // VALIDATE FORM DATA
         if(form1 === "" || form2 === ""){
             alert("Debes llenar todos los campos");
             return;
+        }else{
+            const {data} = useFetch("https://easyorder-backend-3.onrender.com/api/v1/auth/login", {
+                method: "POST",
+                body: JSON.stringify({
+                    email: form1,
+                    password: form2
+                })
+            })
+            console.log(data);
+            
         }
     }
     return (
