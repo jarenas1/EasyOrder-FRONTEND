@@ -56,7 +56,7 @@ function ShowProducts() {
         
             <section className='section-products'>
                 <div className='section-products__text'>
-                    <h2 className='color-primary'>Productos</h2>
+                    {/* <h2 className='color-primary'>Productos</h2> */}
                    
                     <a href="" className='section-products__btn' onClick={handleCartClick}>
                         <i className="bi bi-cart-fill"></i>

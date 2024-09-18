@@ -6,12 +6,17 @@
 
 .serctio-card-container__info{
     display: flex;
-    
     align-items: center;
     justify-content: space-evenly;
     position: relative;
     padding: 20px 0;
 
+}
+
+.serctio-card-container__info> *{
+    
+    width: 100px;
+    text-align: center;
 }
 
 .serctio-card-container__info::after{
@@ -24,3 +29,20 @@
     left: 0;
     bottom: 0;
 }
+
+.btn__eliminar{
+    background-color: rgb(229, 62, 62);
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: .4s all;
+    border-radius: 20px;
+    width: 50px;
+
+}
+
+
+.btn__eliminar:hover{
+   transform: scale(1.1);
+}
+
