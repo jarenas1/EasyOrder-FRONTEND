@@ -27,7 +27,7 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
-  /* outline: 2px solid black; */
+  //  outline: 2px solid rgb(255, 0, 0);
 }
 
 body {
@@ -82,7 +82,9 @@ img {
   transition: .4s transform;
 }
 
-
+main{
+  min-height: 55vh;
+}
 
 .container {
  
