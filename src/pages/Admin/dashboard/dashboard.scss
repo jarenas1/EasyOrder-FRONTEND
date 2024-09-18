@@ -70,7 +70,7 @@ body{
     width: 100%;
 
     button{
-        background-color: green;
+        background-color: #198754;
         margin: 20px 0px;
         height: 45px;
         border: none;
@@ -84,9 +84,11 @@ body{
 
             &:hover{
                 scale: 1.04;
+                cursor: pointer;
             }
         }
     table{
+        border-radius: 10px;
         width: 80%;
         border-collapse: collapse;
         margin-top: 30px;
@@ -111,32 +113,37 @@ body{
                     padding: 10px;
                     text-align: center;
                     font-size: 19px;
+
+                    .img-product-table{
+                        margin: 0 auto;
+                        width: 120px;
+                        border-radius: 10px;
+                    }
                     
                     .edit-btn {
-                        background-color: yellow;
+                        background-color: #0D6EFD;
                         margin: 20px 5px;
                         height: 40px;
                         border: none;
-                        border-radius: 30px;
-                        color: $background-color;
+                        border-radius: 8px;
+                        color: $font-color;
                         font-size: 17px;
-                        font-weight: bold;
                         padding-left: 15px;
                         padding-right: 15px;
                         transition: all 0.1s ease-in-out;
 
                             &:hover{
                                 scale: 1.04;
+                                cursor: pointer;
                             }
                         }
                         .delete-btn {
-                        background-color: $button-color;
+                        background-color: #DC3545;
                         margin: 20px 5px;
                         height: 40px;
                         border: none;
-                        border-radius: 30px;
-                        color: $background-color;
-                        font-weight: bold;
+                        border-radius: 8px;
+                        color: $font-color;
                         font-size: 17px;
                         padding-left: 15px;
                         padding-right: 15px;
@@ -144,6 +151,7 @@ body{
 
                             &:hover{
                                 scale: 1.04;
+                                cursor: pointer;
                             }
                         }
                     }
@@ -171,10 +179,10 @@ body{
                         margin: 10px ;
                         
                         .edit-btn {
-                            margin: 20px 0px;
+                            margin: 5px 0px;
                         }
                             .delete-btn {
-                            margin: 20px 0px;
+                            margin: 5px 5px;
                             padding-left: 5px;
                             padding-right: 5px;
 
@@ -218,75 +226,41 @@ body{
     //     }
     // }
 
-    .table-containern{
+}
+
+@media(max-width:470px){
+    .table-container{
         table{
             tbody{
                 tr{
                     td{
+                        font-size: 15px;
+                        font-weight: 600;
+                        margin: 10px ;
                         
                         .edit-btn {
                             margin: 5px 0px;
-                            height: 30px;
-                            }
-                            .delete-btn {
-                                margin: 5px 0px;
-                                height: 30px;
-                            }
-                        }
-                    }
-                }
-        }
-    }
-}
-
-@media(max-width: 450px) {
-    section{
-        table{
-            tbody{
-                tr{
-                    td{
-                        font-size: 13.5px;
-                        .edit-btn {
-                            margin: 5px 0px;
-                            height: 30px;
+                            height: 35px;
                             font-size: 13px;
-                            }
+                        }
                             .delete-btn {
-                                margin: 5px 0px;
-                                height: 30px;
-                                font-size: 13px;
+                            margin: 5px 5px;
+                            padding-left: 5px;
+                            padding-right: 5px;
+                            height: 35px;
+                            font-size: 13px;
+
+
                             }
                         }
                     }
                 }
+            }
         }
-    }
 }
 
-@media(max-width: 415px){
-    section{
-        table{
-            tbody{
-                tr{
-                    td{
-                        font-size: 12px;
-                        .edit-btn {
-                            margin: 5px 0px;
-                            height: 30px;
-                            font-size: 10px;
-                            padding: 9px;
-                            }
-                            .delete-btn {
-                                margin: 5px 0px;
-                                height: 30px;
-                                font-size: 10px;
-                            }
-                        }
-                    }
-                }
-        }
-    }
-}
+
+
 
 // @media(max-width: 400px){
 //     header{
