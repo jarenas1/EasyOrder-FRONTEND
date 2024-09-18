@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 export const LoginForm = () => {
-
+    //STATES
     const [form1, setForm1] = useState("");
     const [form2, setForm2] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -19,8 +19,17 @@ export const LoginForm = () => {
                 return;
         }
     }
-//juan@gmail.com
-    //Check if the inputs are valid PONER ACA VALIDACIONNNNNNNN !!!!!!!!
+    //SET THE USER TOKEN INTO THE CONTEXT AND THE LOCAL STORAGE
+    const setTokenAuth = (data) =>{
+        console.log(data.ACCESS_TOKEN);
+        console.log(data.user);
+        
+        localStorage.setItem("userToken", data.ACCESS_TOKEN);
+        localStorage.setItem("userData", JSON.stringify(data.user));
+        //SET THE USER IN THE CONTEXT
+        // setUser(data);
+    }
+    //check the data from inputs
     const onSubmit = async (e) => {
         e.preventDefault();
         
@@ -29,36 +38,35 @@ export const LoginForm = () => {
             alert("Debes llenar todos los campos");
             return;
         }
-        else{
-            setIsLoading(true);
-            try {
-                const response = await fetch("https://easyorder-backend-3.onrender.com/api/v1/auth/login", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        username: form1,
-                        password: form2
-                    })
-                });
-                console.log(response);
-                
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error('');
-                }
         
-                const data = await response.json();
-                console.log(data);
-                
-            } catch (error) {
-                console.log(error);
-                
-                alert(`"Error during fetch: ${error.status}`);
+        //Fetching the users
+        setIsLoading(true); //seting loading to true
+        try {
+            const response = await fetch("https://easyorder-backend-3.onrender.com/api/v1/auth/login", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ //data of inputs
+                    username: form1,
+                    password: form2
+                })
+            });
+            //If response is bad, extract the errorStatus and create a new error
+            if (!response.ok) {  
+                const error = await response.text();
+                const errorMessage = JSON.parse(error).statusCode;
+                throw new Error(errorMessage+ ":  Credenciales incorrectas");
             }
-            setIsLoading(false);
+            //If response is ok, transofrm json to js and call the function to set the data
+            const data = await response.json();
+            setTokenAuth(data)
         }
+        //IF THE API CANOT BE FETCHED, LETS SHOW AN ALERT WITH THE EROR THAT WE CREATE BEFORE
+        catch (error) {
+                alert(error)
+        }
+        setIsLoading(false); //Retorning the loading to false because the fetch is finished
     };
     return (
         <>
