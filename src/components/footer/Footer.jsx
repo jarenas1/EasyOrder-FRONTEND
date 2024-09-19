@@ -17,7 +17,7 @@ export default function Footer() {
                         <div className="footer-section__info">
                             <p className="color-primary">Producido por:</p>
                             <figure className="footer-section__figure">
-                                <img src='https://lh3.googleusercontent.com/29Z6d-M5XgTZQUIySfCKS73UKosvNP13auEb6pJq9AN8bxfzPrvFoKH4qLtqgVLkqJLJgQ=s85' alt="" />
+                                <img src='src\assets\logo.png' alt="Logo" />
                             </figure>
                         </div>
                     </article>

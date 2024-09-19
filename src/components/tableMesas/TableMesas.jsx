@@ -1,7 +1,7 @@
 import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
 import MesasModal from "./MesasModal"
 
-export const TableMesas = () => {
+export const TableMesas = ({tables, handleEdit, handleDelete}) => {
     return (
       <>
         <section className="table-container">
@@ -20,6 +20,15 @@ export const TableMesas = () => {
                       </tr>
                   </thead>
                   <tbody>
+                    {tables.map(table =>{
+                          <tr key={table.id}>
+                            <td>{table.name}</td>
+                            <td>
+                              <button className="edit-btn" onClick={() => handleEdit(product.id)}>Editar</button>
+                              <button className="delete-btn" onClick={() => handleDelete(product.id)}>Eliminar</button>
+                            </td>
+                          </tr>
+                    })}
                       <tr>
                       <td>1229232asds021a</td>
                       <td>12</td>
