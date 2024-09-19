@@ -1,7 +1,7 @@
 export const TableMesas = () => {
     return (
       <>
-        <section>
+        <section className="table-container">
               <button>
                     Añadir
               </button>

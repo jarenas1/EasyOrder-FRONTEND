@@ -18,7 +18,8 @@ export const OrderButton = () => {
     <button
       onClick={toggleStatus}
       style={{
-        backgroundColor: status === 'preparación' ? '#a3a606' : (status === 'entregado' ? 'green' : 'blue'),
+        backgroundColor: status === 'preparación' ? '#FFC107' : (status === 'entregado' ? '#198754' : 'blue'),
+        color: status === 'preparación' ? 'black' : (status === 'entregado' ? 'white' : 'blue'),
       }} className='button-toggle'
     >
       {status === 'preparación' ? 'Marcar en preparacion' : (status === 'entregado' ? 'Marcar Entregado' : 'Finished')}
