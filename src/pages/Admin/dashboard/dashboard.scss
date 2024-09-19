@@ -17,41 +17,6 @@ body{
     color: $font-color;
 }
 
-// header{
-//     margin-top: 30px;
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-
-//     img{
-//         width: 120px;
-//         border-radius: 100px;
-//         margin-left: 50px;
-//     }
-
-//     h2{
-//         text-align: center;
-//         font-size: 30px;
-//         margin-left: 2%;
-//     }
-
-//     button{
-//         margin-right: 50px;
-//         background-color: $button-color;
-//         width: 140px;
-//         height: 40px;
-//         border: none;
-//         border-radius: 30px;
-//         color: $font-color;
-//         font-weight: bold;
-//         box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.9); /* Efecto de resplandor */
-//         transition: all 0.1s ease-in-out;
-
-//         &:hover{
-//             scale: 1.04;
-//         }
-//     }
-// }
 .dashboard-container{
     margin-top: 10vh;
     h1{
@@ -69,7 +34,7 @@ body{
     align-items: center;
     width: 100%;
 
-    button{
+    .button-add{
         background-color: #198754;
         margin: 20px 0px;
         height: 45px;

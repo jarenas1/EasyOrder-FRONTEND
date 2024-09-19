@@ -6,8 +6,9 @@ export const TableMesas = () => {
       <>
         <section className="table-container">
 
-        <ButtonModal className = "btn-success" id = "modalTables"/>
+        <ButtonModal className = "button-add" id = "modalTables"/>
 
+        <MesasModal/>
 {/* <TableMesas/> */}
 
               <table>

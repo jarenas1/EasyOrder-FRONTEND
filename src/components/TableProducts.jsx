@@ -2,7 +2,7 @@ export const TableProducts = () => {
     return (
       <>
         <section className="table-container">
-              <button>
+              <button button-add>
                   Añadir
               </button>
               <table>

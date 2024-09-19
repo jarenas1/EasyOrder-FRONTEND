@@ -2,7 +2,7 @@ export const TableWaiters = () => {
     return (
       <>
           <section className="table-container">
-              <button>
+              <button button-add>
                   Añadir
               </button>
               <table>
