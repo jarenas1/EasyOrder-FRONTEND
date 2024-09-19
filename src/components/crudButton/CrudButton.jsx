@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TableMesas } from "../TableMesas";
+import { TableMesas } from "../tableMesas/TableMesas";
 import { TableProducts } from "../TableProducts";
 import { TableWaiters } from "../TableWaiters";
 import './crudButton.scss';

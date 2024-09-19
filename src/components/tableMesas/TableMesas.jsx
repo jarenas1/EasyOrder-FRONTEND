@@ -1,10 +1,15 @@
+import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
+import MesasModal from "./MesasModal"
+
 export const TableMesas = () => {
     return (
       <>
         <section className="table-container">
-              <button>
-                    Añadir
-              </button>
+
+        <ButtonModal className = "btn-success" id = "modalTables"/>
+
+{/* <TableMesas/> */}
+
               <table>
                   <thead>
                       <tr>

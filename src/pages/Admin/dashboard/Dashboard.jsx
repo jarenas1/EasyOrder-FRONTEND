@@ -11,6 +11,8 @@ export  const Dashboard = () => {
         <h2>Nombre del admin</h2>
         <button>Cerrar sesion</button>
       </header> */}
+
+
       <section className='dashboard-container'>
       <h1>Panel de control</h1>
         {/* BUTTON TO SELECT THE CRUD */}
