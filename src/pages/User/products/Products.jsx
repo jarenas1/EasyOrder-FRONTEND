@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 function ShowProducts() {
     
-    const { data, loading, error } = useFetch("http://localhost:3000/products")
+    const { data, loading, error } = useFetch("https://easyorder-backend-3.onrender.com/api/v1/products")
     const [searchItems, setsearchItems] = useState("")
     const [filter, setFilter] = useState([])
     const [currentPage, setCurrentPage] = useState(1);

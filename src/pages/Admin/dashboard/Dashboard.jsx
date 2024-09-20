@@ -4,6 +4,7 @@ import './dashboard.scss'
 import React, { useEffect, useState } from 'react'
 
 export  const Dashboard = () => {
+
 //table.id, table.name, table.user.id 
   const handleEditTable = (tabla,nombre,id) =>{
     console.log("Me estan editando",tabla,nombre,id);
@@ -37,8 +38,7 @@ const {data: dataWaiters, error: errorWaiters} = useFetch("https://easyorder-bac
 });
 
   const adminData =JSON.parse(localStorage.getItem("userData")) 
-
-  
+  }
   
   return (
     <>

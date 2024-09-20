@@ -8,7 +8,6 @@ export default function useFetch(url, options) {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        console.log("dentro del useEffect")
         const fetchApi = async () => {
             try {
                 const response = await fetch(url, options)

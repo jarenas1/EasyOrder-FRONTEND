@@ -5,11 +5,11 @@ import {CartContext} from '../../../context/CartContext'
 function ProductsCard({ product }) {
   const { addToCart } = useContext(CartContext)
   
-  const {name, price, img} = product
+  const {name, price, url} = product
   return (
     <article className='section-showProducts__article'>
         <figure className='section-showProducts__figure'>
-            <img src={img} alt="" />
+            <img src={url} alt="" />
         </figure>
         <div className='section-showProducts__body'>
             <h3>{name.toUpperCase()}</h3>

@@ -1,6 +1,7 @@
-import { useState } from "react"
-
+import { useContext, useState } from "react"
+import { TokenContext } from '../../../context/TokenAuth'
 export const LoginForm = () => {
+    const {setTokenAuth} = useContext(TokenContext)
     //STATES
     const [form1, setForm1] = useState("");
     const [form2, setForm2] = useState("");
@@ -20,15 +21,7 @@ export const LoginForm = () => {
         }
     }
     //SET THE USER TOKEN INTO THE CONTEXT AND THE LOCAL STORAGE
-    const setTokenAuth = (data) =>{
-        console.log(data.ACCESS_TOKEN);
-        console.log(data.user);
-        
-        localStorage.setItem("userToken", data.ACCESS_TOKEN);
-        localStorage.setItem("userData", JSON.stringify(data.user));
-        //SET THE USER IN THE CONTEXT
-        // setUser(data);
-    }
+    
     //check the data from inputs
     const onSubmit = async (e) => {
         e.preventDefault();
