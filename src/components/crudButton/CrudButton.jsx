@@ -4,7 +4,7 @@ import { TableProducts } from "../tableProducts/TableProducts";
 import { TableWaiters } from "../tableWaiters/TableWaiters";
 import './crudButton.scss';
 
-export const CrudButton = ({data, error, handleEdit, HandleDelete}) => {
+export const CrudButton = ({dataTables, dataProducts, dataWaiters, handleEdit, HandleDelete}) => {
     const [selected, setSelected] = useState('mesas'); // Estado para almacenar el botón seleccionado
 
     const selectedButton = (event) => {
@@ -27,9 +27,9 @@ export const CrudButton = ({data, error, handleEdit, HandleDelete}) => {
                 <p onClick={selectedButton} id='meseros' className='button-right'>Meseros</p>
             </article>
                 {/* Renderiza el componente TableMesas si 'mesas' está seleccionado */}
-                {selected === "mesas" && <TableMesas tables = {data}/>}
-                {selected === "productos" && <TableProducts />}
-                {selected === "meseros" && <TableWaiters />}
+                {selected === "mesas" && <TableMesas tables = {dataTables}/>}
+                {selected === "productos" && <TableProducts products = {dataProducts}/>}
+                {selected === "meseros" && <TableWaiters waiters = {dataWaiters} />}
 
         </>
     );

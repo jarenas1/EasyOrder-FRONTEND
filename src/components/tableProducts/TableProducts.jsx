@@ -1,7 +1,7 @@
 import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
 import { ProductsModal } from "./ProductsModal"
 
-export const TableProducts = () => {
+export const TableProducts = ({products}) => {
     return (
       <>
         <section className="table-container">
@@ -20,6 +20,18 @@ export const TableProducts = () => {
                       </tr>
                   </thead>
                   <tbody>
+
+                    {products.map(product =>(
+                          <tr key={product.id}>
+                            <td><img className="img-product-table" src={product.url} alt="" /></td>
+                            <td>{product.name}</td>
+                            <td>{product.price}</td>
+                            <td>
+                                <button id={product.id} className="edit-btn">Editar</button>
+                                <button id={product.id} className="delete-btn">Eliminar</button>
+                            </td>
+                          </tr>
+                        ))}
                       <tr>
                       <td><img className="img-product-table" src="https://licoresjunior.com/wp-content/uploads/2023/12/Licor-Ron-Viejo-de-Caldas-750-Nueva-Imagen.jpg" alt="" /></td>
                       <td>Aguardiente Antioqueño 1L</td>

@@ -15,6 +15,7 @@ export const TableMesas = ({tables, handleEdit, handleDelete}) => {
                   <thead>
                       <tr>
                         <th>Estado</th>
+                        <th>Mesero</th>
                         <th>Numero</th>
                         <th>Acciones</th>
                       </tr>
@@ -23,6 +24,7 @@ export const TableMesas = ({tables, handleEdit, handleDelete}) => {
                     {tables.map(table =>(
                           <tr key={table.id}>
                             <td>{table.status}</td>
+                            <td>{table.user.name} {table.user.lastname} </td>
                             <td>{table.name}</td>
                             <td>
                               <button className="edit-btn" onClick={() => handleEdit(product.id)}>Editar</button>
