@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import './toggleButton.scss'
 
-export const OrderButton = () => {
+export const ToggleButtonOrders = () => {
   const [status, setStatus] = useState('preparación');
 
   // Función que cambia el estado cuando se hace clic
