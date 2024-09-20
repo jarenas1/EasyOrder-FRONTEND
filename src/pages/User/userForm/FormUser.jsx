@@ -5,10 +5,10 @@ import Swal from 'sweetalert2';
 export const Form = () => {
 
     const navigate = useNavigate()
-//ESTADO DE LA SESION INICIADA
+
     const [input, setInput] = useState("")
 
-    //SE VA LLENANDO EL INPUT
+    
     const onInputChange = ({target}) => {
         setInput(target.value)
     }
@@ -16,7 +16,7 @@ export const Form = () => {
 
      async function onSubmit(e) {
         e.preventDefault();
-        if (!input) {
+        if (input.length === 0) {
             Swal.fire({
                 title: 'Error!',
                 text: 'Debes rellenar el campo con tu nombre',
@@ -39,7 +39,7 @@ export const Form = () => {
             });
 
             if (!response.ok) {
-                throw new Error("Hubo un error en el envío");
+                throw new Error("Hubo un error en el servidor");
             }
 
             const {id} = await response.json();
@@ -58,7 +58,7 @@ export const Form = () => {
   return (
     <>
         <form onSubmit={onSubmit}>
-            <input type="text" name="name" id="name" required placeholder="Ingresa tu nombre" onChange={onInputChange}/>
+            <input type="text" name="name" id="name"  placeholder="Ingresa tu nombre" onChange={onInputChange}/>
             <div>
                 <button type="submit" >Cuenta individual</button>
             </div>
