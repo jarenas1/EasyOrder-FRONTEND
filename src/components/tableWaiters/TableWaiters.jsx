@@ -1,12 +1,13 @@
 import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
+import { WaitersModal } from "./WaitersModal"
 
 export const TableWaiters = () => {
     return (
       <>
           <section className="table-container">
-          <ButtonModal className = "button-add" id = ""/>
+          <ButtonModal className = "button-add" id = "modalWaiters"/>
 
-            {/* <MesasModal/> */}
+        <WaitersModal/>
               <table>
                   <thead>
                       <tr>
