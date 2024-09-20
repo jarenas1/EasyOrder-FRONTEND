@@ -16,7 +16,7 @@ export const Form = () => {
 
      async function onSubmit(e) {
         e.preventDefault();
-        if (input.length === 0) {
+        if (!input) {
             Swal.fire({
                 title: 'Error!',
                 text: 'Debes rellenar el campo con tu nombre',
