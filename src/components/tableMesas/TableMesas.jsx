@@ -1,12 +1,12 @@
 import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
 import MesasModal from "./MesasModal"
 
-export const TableMesas = ({tables, handleEdit, handleDelete}) => {
+export const TableMesas = ({tables, deleteTable, editTable}) => {
     return (
       <>
         <section className="table-container">
 
-        <ButtonModal className = "button-add" id = "modalTables"/>
+        <ButtonModal className = "button-add" id = "modalTables" text = "Crear"/>
 
         <MesasModal/> 
 {/* <TableMesas/> */}
@@ -27,8 +27,9 @@ export const TableMesas = ({tables, handleEdit, handleDelete}) => {
                             <td>{table.user.name} {table.user.lastname} </td>
                             <td>{table.name}</td>
                             <td>
-                              <button className="edit-btn" onClick={() => handleEdit(product.id)}>Editar</button>
-                              <button className="delete-btn" onClick={() => handleDelete(product.id)}>Eliminar</button>
+                              <ButtonModal className = "edit-btn" id = "modalTables" text = "Editar" handleClick={(e) => editTable(table.id, table.name, table.user.id)}/>
+
+                              <button className="delete-btn" onClick={(e) => deleteTable(table.id, table.name, table.user.id )}>Eliminar</button>
                             </td>
                           </tr>
                     ))}

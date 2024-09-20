@@ -1,8 +1,8 @@
-export const ButtonModal = ({className, id}) => {
+export const ButtonModal = ({className, id, text, name, handleClick}) => {
   return (
     <>
-    <button type="button" className={`btn ${className}`} data-bs-toggle="modal" data-bs-target={`#${id}`}>
-        Añadir
+    <button onClick={handleClick} name={name} type="button" className={`btn ${className}`} data-bs-toggle="modal" data-bs-target={`#${id}`}>
+        {text}
     </button>
     </>
   )
