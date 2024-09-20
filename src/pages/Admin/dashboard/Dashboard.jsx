@@ -29,12 +29,14 @@ const {data: dataWaiters, error: errorWaiters} = useFetch("https://easyorder-bac
  },
 });
 
-  
+  const adminData =JSON.parse(localStorage.getItem("userData")) 
+
   
   
   return (
     <>
       <section className='dashboard-container'>
+        <h2>Hola administrador {adminData.name}</h2>
       <h1>Panel de control</h1>
         {/* BUTTON TO SELECT THE CRUD */}
         <article>
