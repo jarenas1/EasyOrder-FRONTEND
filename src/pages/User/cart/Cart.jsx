@@ -2,31 +2,57 @@ import "./cart.scss"
 import { CartContext } from '../../../context/CartContext'
 import { useContext } from "react"
 import CartCard from "../../../components/Cart/CartCard"
-
+import Swal from 'sweetalert2';
 function Cart() {
-    const { cart } = useContext(CartContext)
-    const sessionId = localStorage.getItem("sessionId")
+   const { cart } = useContext(CartContext);
+    const sessionId = localStorage.getItem("sessionId");
+
     async function handlerRequest() {
+        // Confirmar si el usuario quiere realizar el pedido
+        const { isConfirmed } = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: "¿Deseas realizar el pedido?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, realizar pedido',
+            cancelButtonText: 'No, cancelar'
+        });
 
-         const requestBody = cart.map(product => ({
-            quantity: product.quantity,
-            productId: product.id,  
-            sessionId: sessionId,
-        }));
-        try {
-            const response = await fetch('https://easyorder-backend-3.onrender.com/api/v1/requests', {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(requestBody) 
-            });
+        if (isConfirmed) {
+            const requestBody = cart.map(product => ({
+                quantity: product.quantity,
+                productId: product.id,
+                sessionId: sessionId,
+            }));
 
-            const data = await response.json();
-            console.log(data);
+            try {
+                const response = await fetch('https://easyorder-backend-3.onrender.com/api/v1/requests', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                await response.json();   
+                if (!response.ok) {
+                    throw new Error("Error al realizar el pedido");
+                    
+                }
+                Swal.fire({
+                    title: 'Pedido realizado',
+                    text: 'Tu pedido ha sido realizado con éxito.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
 
-        } catch (error) {
-            console.error("Error al realizar la compra:", error);
+            } catch (error) {
+                Swal.fire({
+                    title: 'Error',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Intentar de nuevo'
+                });
+            }
         }
     }
     if (cart.length === 0) {
