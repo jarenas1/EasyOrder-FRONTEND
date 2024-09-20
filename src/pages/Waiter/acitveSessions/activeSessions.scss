@@ -74,7 +74,7 @@ body{
                 font-weight: bold;
                 box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.9); /* Efecto de resplandor */
                 transition: all 0.1s ease-in-out;
-        
+                cursor: pointer;
                 &:hover{
                     scale: 1.04;
                 }
@@ -124,7 +124,7 @@ body{
                     padding-left: 15px;
                     padding-right: 15px;
                     transition: all 0.1s ease-in-out;
-
+                    cursor: pointer;
                     &:hover{
                         scale: 1.04;
                     }
