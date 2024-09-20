@@ -20,15 +20,7 @@ export const LoginForm = () => {
         }
     }
     //SET THE USER TOKEN INTO THE CONTEXT AND THE LOCAL STORAGE
-    const setTokenAuth = (data) =>{
-        console.log(data.ACCESS_TOKEN);
-        console.log(data.user);
-        
-        localStorage.setItem("userToken", data.ACCESS_TOKEN);
-        localStorage.setItem("userData", JSON.stringify(data.user));
-        //SET THE USER IN THE CONTEXT
-        // setUser(data);
-    }
+    
     //check the data from inputs
     const onSubmit = async (e) => {
         e.preventDefault();
