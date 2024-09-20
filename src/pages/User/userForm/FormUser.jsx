@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 export const Form = () => {
 
     const navigate = useNavigate()
-    const [status, setStatus] = useState(false) //ESTADO DE LA SESION INICIADA
+//ESTADO DE LA SESION INICIADA
     const [input, setInput] = useState("")
 
     //SE VA LLENANDO EL INPUT
@@ -14,49 +14,46 @@ export const Form = () => {
     }
     
 
-    //VERIFICACION DE SI EL INPUT ESTA LLENO PERMITA AL USUARIO CONTINUAR
-    const changeStatus = (e) => {
-        e.preventDefault()
-        //SI EL INPUT ES MENOR O IGUAL A 1 MUESTRA UNA ALERTA Y NO PERMITE CONTINUAR
-        if(input.length <= 1){
+     async function onSubmit(e) {
+        e.preventDefault();
+        if (!input) {
             Swal.fire({
                 title: 'Error!',
-                text: 'Por favor ingresa tu nombre',    
+                text: 'Debes rellenar el campo con tu nombre',
                 icon: 'error',
-                confirmButtonText: 'Continuar'
-              })
-        }else{
-            setStatus(!status)
+                confirmButtonText: 'OK'
+            });
+            return;
         }
-    }
 
-    async function onSubmit(e) {
-        e.preventDefault()
-        if (!input) {
-            alert("deberias rellenar los cmabios")
-            return
+        try {
+            const response = await fetch("https://easyorder-backend-3.onrender.com/api/v1/sessions", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: input,
+                    table_id: "f743890b-b2e0-459c-8603-1ead5fc0ff4b"
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Hubo un error en el envío");
+            }
+
+            const {id} = await response.json();
+            localStorage.setItem("sessionId", id);
+            navigate("/products");
+
+        } catch (error) {
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'Intentar de nuevo'
+            });
         }
-        const response = await fetch("https://easyorder-backend-3.onrender.com/api/v1/sessions", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name : input,
-                table_id: "f743890b-b2e0-459c-8603-1ead5fc0ff4b"
-            })
-        })
-
-        if (!response.ok) {
-            alert("Hubo un error")
-            
-        }
-        const {id} = await response.json()
-        
-        localStorage.setItem("sessionId", id)
-        navigate("/products")
-
-        
     }
   return (
     <>
@@ -64,7 +61,6 @@ export const Form = () => {
             <input type="text" name="name" id="name" required placeholder="Ingresa tu nombre" onChange={onInputChange}/>
             <div>
                 <button type="submit" >Cuenta individual</button>
-                <button type="submit" onClick={changeStatus}> Cuenta compartida</button>
             </div>
         </form>
     </>
