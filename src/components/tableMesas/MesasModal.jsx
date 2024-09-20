@@ -13,6 +13,7 @@ const MesasModal = () => {
         <div class="modal-body">
           <form className='ModalForm'>
               <input type="text" required placeholder='Numero de mesa' />
+              <input type="text" required placeholder='Id mesero asignado' />
               <div className='buttons-container'>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-success">Guardar</button>

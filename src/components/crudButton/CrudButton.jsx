@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { TableMesas } from "../tableMesas/TableMesas";
-import { TableProducts } from "../TableProducts";
-import { TableWaiters } from "../TableWaiters";
+import { TableProducts } from "../tableProducts/TableProducts";
+import { TableWaiters } from "../tableWaiters/TableWaiters";
 import './crudButton.scss';
 
-export const CrudButton = () => {
+export const CrudButton = ({data, error, handleEdit, HandleDelete}) => {
     const [selected, setSelected] = useState('mesas'); // Estado para almacenar el botón seleccionado
 
     const selectedButton = (event) => {
@@ -27,7 +27,7 @@ export const CrudButton = () => {
                 <p onClick={selectedButton} id='meseros' className='button-right'>Meseros</p>
             </article>
                 {/* Renderiza el componente TableMesas si 'mesas' está seleccionado */}
-                {selected === "mesas" && <TableMesas />}
+                {selected === "mesas" && <TableMesas tables = {data}/>}
                 {selected === "productos" && <TableProducts />}
                 {selected === "meseros" && <TableWaiters />}
 

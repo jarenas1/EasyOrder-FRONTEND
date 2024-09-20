@@ -1,10 +1,12 @@
+import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
+
 export const TableWaiters = () => {
     return (
       <>
           <section className="table-container">
-              <button button-add>
-                  Añadir
-              </button>
+          <ButtonModal className = "button-add" id = ""/>
+
+            {/* <MesasModal/> */}
               <table>
                   <thead>
                       <tr>
