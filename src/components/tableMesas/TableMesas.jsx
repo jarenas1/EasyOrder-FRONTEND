@@ -8,15 +8,15 @@ export const TableMesas = ({tables, handleEdit, handleDelete}) => {
 
         <ButtonModal className = "button-add" id = "modalTables"/>
 
-        <MesasModal/>
+        <MesasModal/> 
 {/* <TableMesas/> */}
 
               <table>
                   <thead>
                       <tr>
-                      <th>Estado</th>
-                      <th>Numero</th>
-                      <th>Acciones</th>
+                        <th>Estado</th>
+                        <th>Numero</th>
+                        <th>Acciones</th>
                       </tr>
                   </thead>
                   <tbody>
