@@ -38,7 +38,7 @@ const {data: dataWaiters, error: errorWaiters} = useFetch("https://easyorder-bac
 });
 
   const adminData =JSON.parse(localStorage.getItem("userData")) 
-  }
+ 
   
   return (
     <>
