@@ -7,7 +7,7 @@ const setTokenAuth = (data) =>{
         localStorage.setItem("userData", JSON.stringify(data.user));
      
     }
-function TokenAuthProvider() {
+function TokenAuthProvider({ children }) {
   return (
       <TokenContext.Provider value={{
         setTokenAuth

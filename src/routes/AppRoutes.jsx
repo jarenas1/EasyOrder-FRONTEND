@@ -12,12 +12,12 @@ export const AppRoutes = () => {
     <TokenAuthProvider>
       <CartContextProvider>
         <Routes>
-          <Route path='/' element={<ShowProducts />} />
+          <Route path='/products' element={<ShowProducts />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/userForm' element={<UserForm />} />
-          <Route path='/activeSessions' element={<ActiveSessions />} />
+          <Route path='/user' element={<UserForm />} />
+          <Route path='/sessions' element={<ActiveSessions />} />
         </Routes>
       </CartContextProvider>
     </TokenAuthProvider>

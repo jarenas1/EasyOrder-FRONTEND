@@ -51,9 +51,11 @@ export const Form = () => {
             alert("Hubo un error")
             
         }
-        console.log(await response.json())
-        navigate("/products")
+        const {id} = await response.json()
         
+        localStorage.setItem("sessionId", id)
+        navigate("/products")
+
         
     }
   return (

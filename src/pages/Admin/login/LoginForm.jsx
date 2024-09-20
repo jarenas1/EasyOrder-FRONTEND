@@ -1,6 +1,7 @@
-import { useState } from "react"
-
+import { useContext, useState } from "react"
+import { TokenContext } from '../../../context/TokenAuth'
 export const LoginForm = () => {
+    const {setTokenAuth} = useContext(TokenContext)
     //STATES
     const [form1, setForm1] = useState("");
     const [form2, setForm2] = useState("");
