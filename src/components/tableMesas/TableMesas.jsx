@@ -1,29 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ButtonModal } from "../ButtonCreateModal/ButtonModal";
 import MesasModal from "./MesasModal";
-import useFetch from '../../api/apiFetch';
 import { useDelete } from '../../api/useDelete';
-export const TableMesas = ({ tables }) => {
 
-  //Trayendo la data de las mesas por medio del hook
-    const {data: dataTables, error: errorTables } = useFetch("https://easyorder-backend-3.onrender.com/api/v1/tables", {
-    method: 'GET',
-    headers: {
-  'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
-  'Content-Type': 'application/json',
-   },
- });
- 
-  // Estado para manejar los datos de la mesa que se va a editar
-  const [selectedTable, setSelectedTable] = useState({ name: "", id: "", userId: "", button: ""});
+export const TableMesas = () => {
+  const [dataTables, setDataTables] = useState([]);
+  const [errorTables, setErrorTables] = useState(null);
+  const [selectedTable, setSelectedTable] = useState({ name: "", id: "", userId: "", button: "" });
 
-  // Función para manejar el click en Editar y pasar los datos de la mesa seleccionada
+  const fetchTables = useCallback(async () => {
+    try {
+      const response = await fetch("https://easyorder-backend-3.onrender.com/api/v1/tables", {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error('Hubo un problema al obtener las mesas');
+      }
+      const data = await response.json();
+      setDataTables(data);
+    } catch (error) {
+      setErrorTables(error.message);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTables();
+  }, [fetchTables]);
+
   const handleEditClick = (name, id, userId, button) => {
-    setSelectedTable({ name,id, userId, button}); // Actualizamos el estado con los valores de la mesa seleccionada
+    setSelectedTable({ name, id, userId, button });
   };
 
-  //Funcion para eliminar una mesa
+  const handleDelete = useCallback(async (id) => {
+    await useDelete(id, "https://easyorder-backend-3.onrender.com/api/v1/tables", fetchTables);
+  }, [fetchTables]);
 
+  const handleTableUpdate = useCallback(() => {
+    fetchTables();
+  }, [fetchTables]);
+
+  if (errorTables) {
+    return <div>Error: {errorTables}</div>;
+  }
 
   return (
     <>
@@ -35,7 +57,7 @@ export const TableMesas = ({ tables }) => {
             <tr>
               <th>Estado</th>
               <th>Mesero</th>
-              <th>Numero</th>
+              <th>Número</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -46,17 +68,15 @@ export const TableMesas = ({ tables }) => {
                 <td>{table.user.name} {table.user.lastname}</td>
                 <td>{table.name}</td>
                 <td>
-                  {/* Botón Editar que pasa los datos de la mesa al modal */}
                   <ButtonModal
                     className="edit-btn"
                     id="modalTables"
                     text="Editar"
                     handleClick={() => handleEditClick(table.name, table.id, table.user.id, "edit")}
                   />
-
                   <button
                     className="delete-btn"
-                    onClick={() => useDelete(table.id,"https://easyorder-backend-3.onrender.com/api/v1/tables")}
+                    onClick={() => handleDelete(table.id)}
                   >
                     Eliminar
                   </button>
@@ -67,12 +87,12 @@ export const TableMesas = ({ tables }) => {
         </table>
       </section>
 
-      {/* Aquí pasamos los datos de la mesa seleccionada como propiedades al componente MesasModal */}
       <MesasModal
         name={selectedTable.name}
         idWaiter={selectedTable.userId}
         idTable={selectedTable.id}
-        button ={selectedTable.button}
+        button={selectedTable.button}
+        onTableUpdate={handleTableUpdate}
       />
     </>
   );

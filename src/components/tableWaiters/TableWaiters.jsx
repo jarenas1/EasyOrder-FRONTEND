@@ -1,7 +1,20 @@
+import { useEffect } from "react";
 import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
 import { WaitersModal } from "./WaitersModal"
 
 export const TableWaiters = ({waiters}) => {
+
+    //TREAMOS DATA DE MESEROS
+    useEffect(() =>{
+        const {data: dataWaiters, error: errorWaiters} = useFetch("https://easyorder-backend-3.onrender.com/api/v1/user", {
+            method: 'GET',
+            headers: {
+          'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
+          'Content-Type': 'application/json',
+           },
+          });
+    })
+    
     return (
       <>
           <section className="table-container">

@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './mesasModal.scss';
+import Swal from 'sweetalert2';
 
-const MesasModal = ({ name = "",idWaiter = "",idTable="", button = "" }) => {
+const MesasModal = ({ name = "", idWaiter = "", idTable = "", button = "", onTableUpdate }) => {
   const [table, setTable] = useState(name);
   const [tableId, setTableId] = useState(idTable);
   const [waiterId, setWaiterId] = useState(idWaiter);
   const [action, setAction] = useState(button);
-  
-console.log(action);
 
-  // Este efecto actualiza los valores del estado si las props cambian
   useEffect(() => {
     setTable(name);
     setTableId(idTable);
     setWaiterId(idWaiter);
     setAction(button);
-  }, [name, idWaiter, button]);
+  }, [name, idWaiter, idTable, button]);
 
-  // Función para cambiar los valores de los inputs
   const setInputValue = (e) => {
     switch (e.target.name) {
       case 'tableName':
@@ -31,64 +28,70 @@ console.log(action);
     }
   };
 
-  // Efecto para resetear el estado cuando el modal se cierra
   useEffect(() => {
     const modalElement = document.getElementById('modalTables');
     
     const resetModal = () => {
-      setTable("");   // Resetear el campo de la mesa
-      setWaiterId(""); // Resetear el campo del mesero
-      setAction("");   // Resetear el botón
-      setTableId("")
+      setTable("");
+      setWaiterId("");
+      setAction("");
+      setTableId("");
     };
 
-    // Escuchar el evento 'hidden.bs.modal' para resetear los valores
     modalElement.addEventListener('hidden.bs.modal', resetModal);
 
-    // Limpiar el evento cuando el componente se desmonta
     return () => {
       modalElement.removeEventListener('hidden.bs.modal', resetModal);
     };
   }, []);
 
+  const handleEditOrCreate = async (action) => {
+    const url = action === "edit" 
+      ? `https://easyorder-backend-3.onrender.com/api/v1/tables/${tableId}`
+      : `https://easyorder-backend-3.onrender.com/api/v1/tables`;
 
-  //FUNCION QUE EDITA O ELIMINA:
-  const handleEditOrDelete = async (action) => {
-    console.log(action);
-    
-    if (action === "edit"){//FIX URL
-        const response = await fetch (`https://easyorder-backend-3.onrender.com/api/v1/tables/${tableId}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem("userToken")}`
-          },
-          body: JSON.stringify({
-            name : table,
-            user: waiterId
-          })
-        })
-        const data = await response.json();
-        console.log(data);
-        
-    }else{
-      const response = await fetch (`https://easyorder-backend-3.onrender.com/api/v1/tables`, {
-        method: 'POST',
+    const method = action === "edit" ? 'PATCH' : 'POST';
+
+    try {
+      const response = await fetch(url, {
+        method: method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem("userToken")}`
         },
         body: JSON.stringify({
-          name : table,
-          status: "disponible",
-          user: waiterId
+          name: table,
+          user: waiterId,
+          status: action === "edit" ? undefined : "disponible"
         })
-      })
+      });
+
+      if (!response.ok) {
+        throw new Error('La respuesta de la red no fue satisfactoria');
+      }
+
       const data = await response.json();
       console.log(data);
-      
+
+      Swal.fire({
+        title: "¡Éxito!",
+        text: `Mesa ${action === "edit" ? "actualizada" : "creada"} correctamente.`,
+        icon: "success",
+      });
+
+      if (onTableUpdate) {
+        onTableUpdate();
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      Swal.fire({
+        title: "Error",
+        text: `Hubo un problema al ${action === "edit" ? "actualizar" : "crear"} la mesa.`,
+        icon: "error",
+      });
     }
   };
+
   return (
     <>
       <section className="modal fade" id="modalTables" tabIndex="-1" aria-labelledby="modalTablesl" aria-hidden="true">
@@ -104,7 +107,7 @@ console.log(action);
                   name="tableName"
                   type="text"
                   required
-                  placeholder="Numero de mesa"
+                  placeholder="Número de mesa"
                   value={table}
                   onChange={setInputValue}
                 />
@@ -120,9 +123,7 @@ console.log(action);
                   <button type="button" className="btn btn-danger" data-bs-dismiss="modal">
                     Cerrar
                   </button>
-                  <button type="button" className="btn btn-success" data-bs-dismiss="modal" aria-label="Close" onClick={(e)=>{
-                    handleEditOrDelete(action);
-                  }}>
+                  <button type="button" className="btn btn-success" data-bs-dismiss="modal" aria-label="Close" onClick={() => handleEditOrCreate(action)}>
                     Guardar
                   </button>
                 </div>

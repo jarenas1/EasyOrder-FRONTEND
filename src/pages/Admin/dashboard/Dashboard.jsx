@@ -20,13 +20,7 @@ export  const Dashboard = () => {
 
    //-----------------------------------------------------WAITERS--------------------------------------------------------
 
-   const {data: dataWaiters, error: errorWaiters} = useFetch("https://easyorder-backend-3.onrender.com/api/v1/user", {
-    method: 'GET',
-    headers: {
-  'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
-  'Content-Type': 'application/json',
-   },
-  });
+
   //-----------------------------------------------------WAITERS--------------------------------------------------------
  const {data: dataProducts, error: errorProducts} = useFetch("https://easyorder-backend-3.onrender.com/api/v1/products", {
   method: 'GET',
