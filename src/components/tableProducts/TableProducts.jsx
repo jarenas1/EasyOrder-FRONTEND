@@ -24,7 +24,7 @@ export const TableProducts = () => {
         const data = await response.json();
         setDataProducts(data);
       } catch (error) {
-        seterrorProducts(error.message);
+        setErrorProducts(error.message);
       }
     }, []);
   
