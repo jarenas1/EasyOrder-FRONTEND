@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './mesasModal.scss';
 
-const MesasModal = ({ name = "", id = "" }) => {
+const MesasModal = ({ name = "",idWaiter = "",idTable="", button = "" }) => {
   const [table, setTable] = useState(name);
-  const [waiterId, setWaiterId] = useState(id);
+  const [tableId, setTableId] = useState(idTable);
+  const [waiterId, setWaiterId] = useState(idWaiter);
+  const [action, setAction] = useState(button);
+  
+console.log(action);
 
   // Este efecto actualiza los valores del estado si las props cambian
   useEffect(() => {
     setTable(name);
-    setWaiterId(id);
-  }, [name, id]);
+    setTableId(idTable);
+    setWaiterId(idWaiter);
+    setAction(button);
+  }, [name, idWaiter, button]);
 
   // Función para cambiar los valores de los inputs
   const setInputValue = (e) => {
@@ -32,6 +38,8 @@ const MesasModal = ({ name = "", id = "" }) => {
     const resetModal = () => {
       setTable("");   // Resetear el campo de la mesa
       setWaiterId(""); // Resetear el campo del mesero
+      setAction("");   // Resetear el botón
+      setTableId("")
     };
 
     // Escuchar el evento 'hidden.bs.modal' para resetear los valores
@@ -43,6 +51,44 @@ const MesasModal = ({ name = "", id = "" }) => {
     };
   }, []);
 
+
+  //FUNCION QUE EDITA O ELIMINA:
+  const handleEditOrDelete = async (action) => {
+    console.log(action);
+    
+    if (action === "edit"){//FIX URL
+        const response = await fetch (`https://easyorder-backend-3.onrender.com/api/v1/tables/${tableId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("userToken")}`
+          },
+          body: JSON.stringify({
+            name : table,
+            user: waiterId
+          })
+        })
+        const data = await response.json();
+        console.log(data);
+        
+    }else{
+      const response = await fetch (`https://easyorder-backend-3.onrender.com/api/v1/tables`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem("userToken")}`
+        },
+        body: JSON.stringify({
+          name : table,
+          status: "disponible",
+          user: waiterId
+        })
+      })
+      const data = await response.json();
+      console.log(data);
+      
+    }
+  };
   return (
     <>
       <section className="modal fade" id="modalTables" tabIndex="-1" aria-labelledby="modalTablesl" aria-hidden="true">
@@ -74,7 +120,9 @@ const MesasModal = ({ name = "", id = "" }) => {
                   <button type="button" className="btn btn-danger" data-bs-dismiss="modal">
                     Cerrar
                   </button>
-                  <button type="button" className="btn btn-success">
+                  <button type="button" className="btn btn-success" data-bs-dismiss="modal" aria-label="Close" onClick={(e)=>{
+                    handleEditOrDelete(action);
+                  }}>
                     Guardar
                   </button>
                 </div>

@@ -14,13 +14,7 @@ export  const Dashboard = () => {
     
   }
 
-  const {data: dataTables, error: errorTables } = useFetch("https://easyorder-backend-3.onrender.com/api/v1/tables", {
-    method: 'GET',
-    headers: {
-  'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
-  'Content-Type': 'application/json',
-   },
- });
+
   //-----------------------------------------------------TABLES--------------------------------------------------------
   
 
@@ -54,7 +48,7 @@ export  const Dashboard = () => {
       <h1>Panel de control</h1>
         {/* BUTTON TO SELECT THE CRUD */}
         <article>
-        <CrudButton dataTables = {dataTables} handleEditTable = {handleEditTable} handleDeleteTable = {handleDeleteTable} dataProducts = {dataProducts} dataWaiters = {dataWaiters}/>
+        <CrudButton />
         </article>
         {/* CRUD */}
       </section>
