@@ -1,42 +1,64 @@
-import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
-import MesasModal from "./MesasModal"
+import { useState } from 'react';
+import { ButtonModal } from "../ButtonCreateModal/ButtonModal";
+import MesasModal from "./MesasModal";
 
-export const TableMesas = ({tables, deleteTable, editTable}) => {
-    return (
-      <>
-        <section className="table-container">
+export const TableMesas = ({ tables }) => {
+  // Estado para manejar los datos de la mesa que se va a editar
+  const [selectedTable, setSelectedTable] = useState({ name: "", id: "", userId: "" });
 
-        <ButtonModal className = "button-add" id = "modalTables" text = "Crear"/>
+  // Función para manejar el click en Editar y pasar los datos de la mesa seleccionada
+  const handleEditClick = (id, name, userId) => {
+    setSelectedTable({ id, name, userId }); // Actualizamos el estado con los valores de la mesa seleccionada
+  };
 
-        <MesasModal/> 
-{/* <TableMesas/> */}
+  return (
+    <>
+      <section className="table-container">
+        <ButtonModal className="button-add" id="modalTables" text="Crear" />
 
-              <table>
-                  <thead>
-                      <tr>
-                        <th>Estado</th>
-                        <th>Mesero</th>
-                        <th>Numero</th>
-                        <th>Acciones</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    {tables.map(table =>(
-                          <tr key={table.id}>
-                            <td>{table.status}</td>
-                            <td>{table.user.name} {table.user.lastname} </td>
-                            <td>{table.name}</td>
-                            <td>
-                              <ButtonModal className = "edit-btn" id = "modalTables" text = "Editar" handleClick={(e) => editTable(table.id, table.name, table.user.id)}/>
+        <table>
+          <thead>
+            <tr>
+              <th>Estado</th>
+              <th>Mesero</th>
+              <th>Numero</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tables.map((table) => (
+              <tr key={table.id}>
+                <td>{table.status}</td>
+                <td>{table.user.name} {table.user.lastname}</td>
+                <td>{table.name}</td>
+                <td>
+                  {/* Botón Editar que pasa los datos de la mesa al modal */}
+                  <ButtonModal
+                    className="edit-btn"
+                    id="modalTables"
+                    text="Editar"
+                    handleClick={() => handleEditClick(table.id, table.name, table.user.id)}
+                  />
 
-                              <button className="delete-btn" onClick={(e) => deleteTable(table.id, table.name, table.user.id )}>Eliminar</button>
-                            </td>
-                          </tr>
-                    ))}
-                  </tbody>
-              </table>
-          </section>
-      </>
-    )
-  }
-  
+                  {/* Botón Eliminar */}
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteTable(table.id)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      {/* Aquí pasamos los datos de la mesa seleccionada como propiedades al componente MesasModal */}
+      <MesasModal
+        name={selectedTable.name}
+        id={selectedTable.userId}
+      />
+    </>
+  );
+};
