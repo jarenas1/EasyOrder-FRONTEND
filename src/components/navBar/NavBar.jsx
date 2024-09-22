@@ -8,10 +8,16 @@ function NavBar() {
   if (location.pathname == "/cart") {
     content = <Button style = {{padding: "10px", background: "none", border: "none", display: "flex", gap: "10px", color:"#fff", alignItems: "center", border: "1px solid #fff", cursor: "pointer", borderRadius: "5px" }} text="products" handlerClick={() => {
       navigate("/products")
-    }} />
+    }} />}
+
+    if (location.pathname == "/dashboard" || location.pathname == "/sessions") {
+      content = <button className='session-close' onClick={() => {
+        navigate("/login")
+        localStorage.removeItem("userToken")
+        localStorage.removeItem("userData")
+      }}>Cerrar sesion</button>}
     
     
-  } 
   return (
       <nav className='nav'>
           <figure className='nav__figure'>

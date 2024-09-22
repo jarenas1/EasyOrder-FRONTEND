@@ -26,7 +26,8 @@ function Cart() {
             }));
 
             try {
-                const response = await fetch('https://easyorder-backend-3.onrender.com/api/v1/requests', {
+                const response = await fetch('https://easyorder-backend-3.onrender.com/api/v1/requests/many', {
+
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
