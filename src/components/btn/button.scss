@@ -1,0 +1,36 @@
+.btnn{
+    padding: 10px; 
+    background: none;
+    border: none;
+    display: flex; 
+    gap: 10px; 
+    color:#fff;
+    align-items: center; 
+    border: 1px solid #fff; 
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    transition: .4s all;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.btnn::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height:100%;
+    left: -100%;
+    transition: .4s all;
+    
+
+    background-color:white;
+}
+.btnn:hover::after{
+    left: 0;
+    z-index: -1;
+}
+.btnn:hover {
+    color: black;
+}

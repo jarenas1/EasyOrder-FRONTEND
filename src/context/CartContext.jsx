@@ -37,6 +37,7 @@ export function CartContextProvider(props) {
   return (
       <CartContext.Provider value={{
           cart,
+          setCart,
           addToCart,
           removeFromCart
       }}>

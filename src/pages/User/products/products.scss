@@ -12,7 +12,7 @@
     left: 0;
     top: 0;
     width:100% ;
-    height: 55vh;
+    min-height: 55vh;
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.388),
@@ -103,6 +103,18 @@
         height: 43vh;
     }
     
+}
+
+
+.typewriter {
+    border-right: 0.1em solid transparent;
+    overflow: hidden;
+    animation: blink 2s step-end ;
+}
+
+@keyframes blink {
+    0%, 100% { border-color: #fff; }
+    50% { border-color: #fff; }
 }
 
 @media (max-width: 1000px) {

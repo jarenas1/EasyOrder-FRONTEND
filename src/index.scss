@@ -84,6 +84,9 @@ img {
 
 main{
   min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .container {

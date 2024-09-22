@@ -3,10 +3,11 @@ import { CartContext } from '../../../context/CartContext'
 import { useContext } from "react"
 import CartCard from "../../../components/Cart/CartCard"
 import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 function Cart() {
-   const { cart } = useContext(CartContext);
+   const { cart, setCart } = useContext(CartContext);
     const sessionId = localStorage.getItem("sessionId");
-
+    const navigate = useNavigate()
     async function handlerRequest() {
         // Confirmar si el usuario quiere realizar el pedido
         const { isConfirmed } = await Swal.fire({
@@ -46,6 +47,10 @@ function Cart() {
                     confirmButtonText: 'Aceptar'
                 });
 
+                setCart([]);
+                localStorage.removeItem("cart")
+                navigate("/products")
+
             } catch (error) {
                 Swal.fire({
                     title: 'Error',
@@ -62,10 +67,9 @@ function Cart() {
     
   return (
       <section className='section-cart'>
-          <h2>CARRITO</h2>
+          <h2>Carrito</h2>
           
           <div className='serctio-card-container'>
-              
               <CartCard products={cart}></CartCard>
           </div>
           <div className="section-cart__btn">

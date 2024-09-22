@@ -16,7 +16,7 @@ export const AppRoutes = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/user' element={<UserForm />} />
+          <Route path='/' element={<UserForm />} />
           <Route path='/sessions' element={<ActiveSessions />} />
         </Routes>
       </CartContextProvider>

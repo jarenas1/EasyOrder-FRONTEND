@@ -15,6 +15,22 @@ function ShowProducts() {
     const productsPerPage = 9;
     const navigate = useNavigate();
     
+    const [slogan, setSlogan] = useState("");
+    const fullSlogan = "𝘚𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘊𝘜𝘓𝘛𝘜𝘙𝘈, 𝘴𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘐𝘋𝘌𝘖𝘓𝘖𝘎𝘐́𝘈, 𝘴𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘋𝘖𝘊𝘛𝘙𝘐𝘕𝘈…";
+
+    useEffect(() => {
+        let index = -1;
+        const interval = setInterval(() => {
+            setSlogan((prev) => prev + fullSlogan[index]);
+            index++;
+            if (index === fullSlogan.length-1) clearInterval(interval);
+        }, 20); // Velocidad de la animación (en milisegundos)
+        
+        return () => clearInterval(interval);
+    }, []);
+
+
+
     useEffect(() => {
          if (data && Array.isArray(data)) {
             
@@ -50,7 +66,7 @@ function ShowProducts() {
             <header className='header'>
                 <div className='header__text'>
                     <h1 className='color-primary'>La Logia</h1>
-                    <p className='color-primary'>𝘚𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘊𝘜𝘓𝘛𝘜𝘙𝘈, 𝘴𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘐𝘋𝘌𝘖𝘓𝘖𝘎𝘐́𝘈, 𝘴𝘰𝘮𝘰𝘴 𝘶𝘯𝘢 𝘋𝘖𝘊𝘛𝘙𝘐𝘕𝘈…</p>
+                    <p className='color-primary typewriter'>{ slogan}</p>
                 </div>
             </header>
         
