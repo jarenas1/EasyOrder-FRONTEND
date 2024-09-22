@@ -1,15 +1,59 @@
+import { useCallback, useEffect, useState } from "react";
 import { ButtonModal } from "../ButtonCreateModal/ButtonModal"
 import { ProductsModal } from "./ProductsModal"
+import { useDelete } from "../../api/useDelete";
 
-export const TableProducts = ({products}) => {
+export const TableProducts = () => {
+
+    const [dataProducts, setDataProducts] = useState([]);
+    const [errorProducts, setErrorProducts] = useState(null);
+    const [selectedProduct, setSelectedProduct] = useState({ id: "", name: "", price: "", url: "", button: "" });
+  
+    const fetchProducts = useCallback(async () => {
+      try {
+        const response = await fetch("https://easyorder-backend-3.onrender.com/api/v1/products", {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          throw new Error('Hubo un problema al obtener los productos');
+        }
+        const data = await response.json();
+        setDataProducts(data);
+      } catch (error) {
+        setErrorProducts(error.message);
+      }
+    }, []);
+  
+    useEffect(() => {
+        fetchProducts();
+    }, [fetchProducts]);
+  
+    const handleEditClick = (id, name, price, url, button) => {
+      setSelectedProduct({id, name, price, url, button});
+    };
+  
+    const handleDelete = useCallback(async (id) => {
+      await useDelete(id, "https://easyorder-backend-3.onrender.com/api/v1/products", fetchProducts);
+    }, [fetchProducts]);
+  
+    const handleProductUpdate = useCallback(() => {
+        fetchProducts();
+        }, [fetchProducts]);
+  
+    if (errorProducts) {
+      return <div>Error: {errorProducts}</div>;
+    }
+  
+
     return (
       <>
         <section className="table-container">
-        <ButtonModal className = "button-add" id = "modalProducts"/>
+        <ButtonModal className = "button-add" id = "modalProducts" text="Crear"/>
 
-        <ProductsModal/>
-
-        {/* <MesasModal/> */}
               <table>
                   <thead>
                       <tr>
@@ -21,50 +65,30 @@ export const TableProducts = ({products}) => {
                   </thead>
                   <tbody>
 
-                    {products.map(product =>(
+                    {dataProducts.map(product =>(
                           <tr key={product.id}>
                             <td><img className="img-product-table" src={product.url} alt="" /></td>
                             <td>{product.name}</td>
                             <td>{product.price}</td>
                             <td>
-                                <button id={product.id} className="edit-btn">Editar</button>
-                                <button id={product.id} className="delete-btn">Eliminar</button>
+                            <ButtonModal className = "edit-btn" id = "modalProducts" text="Editar" handleClick={() => handleEditClick( product.id, product.name, product.price, product.url, "edit")}/>
+
+                            <button id={product.id} onClick={() => handleDelete(product.id)} className="delete-btn">Eliminar</button>
                             </td>
                           </tr>
                         ))}
-                      <tr>
-                      <td><img className="img-product-table" src="https://licoresjunior.com/wp-content/uploads/2023/12/Licor-Ron-Viejo-de-Caldas-750-Nueva-Imagen.jpg" alt="" /></td>
-                      <td>Aguardiente Antioqueño 1L</td>
-                      <td>000.000</td>
-                      <td>
-                          <button className="edit-btn">Editar</button>
-                          <button className="delete-btn">Eliminar</button>
-                      </td>
-                      </tr>
-  
-                      <tr>
-                      <td><img className="img-product-table" src="https://licoresjunior.com/wp-content/uploads/2023/12/Licor-Ron-Viejo-de-Caldas-750-Nueva-Imagen.jpg" alt="" /></td>
-                      <td>12</td>
-                      <td>000.000</td>
-                      <td>
-                          <button className="edit-btn">Editar</button>
-                          <button className="delete-btn">Eliminar</button>
-                      </td>
-                      </tr>
-  
-                      <tr>
-                      <td><img className="img-product-table" src="https://licoresjunior.com/wp-content/uploads/2023/12/Licor-Ron-Viejo-de-Caldas-750-Nueva-Imagen.jpg" alt="" /></td>
-                      <td>12</td>
-                      <td>000.000</td>
-                      <td>
-                          <button className="edit-btn">Editar</button>
-                          <button className="delete-btn">Eliminar</button>
-                      </td>
-                      </tr>
-  
                   </tbody>
               </table>
           </section>
+
+          <ProductsModal 
+        name={selectedProduct.name}
+        url={selectedProduct.url}
+        price={selectedProduct.price}
+        idProduct={selectedProduct.id}
+        button={selectedProduct.button}
+        onProductUpdate={handleProductUpdate}/>
+
       </>
     )
   }
