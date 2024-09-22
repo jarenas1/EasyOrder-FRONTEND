@@ -1,7 +1,9 @@
 import { useContext, useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom";
 import { TokenContext } from '../../../context/TokenAuth'
 export const LoginForm = () => {
     const {setTokenAuth} = useContext(TokenContext)
+    const navigate = useNavigate()
     //STATES
     const [form1, setForm1] = useState("");
     const [form2, setForm2] = useState("");
@@ -20,7 +22,14 @@ export const LoginForm = () => {
                 return;
         }
     }
-    //SET THE USER TOKEN INTO THE CONTEXT AND THE LOCAL STORAGE
+    const checkRole = (data)=>{
+        
+        if(data.user.role.id == '3ca4d91f-4ca2-46e5-ba9c-8bd12fe0645a'){
+            navigate("/dashboard")
+        }else{
+            navigate("/sessions")
+        }
+    }
     
     //check the data from inputs
     const onSubmit = async (e) => {
@@ -51,9 +60,10 @@ export const LoginForm = () => {
                 const errorMessage = JSON.parse(error).statusCode;
                 throw new Error(errorMessage+ ":  Credenciales incorrectas");
             }
-            //If response is ok, transofrm json to js and call the function to set the data
+            //If response is ok, transofrm json to js and call the function to set the data and navigate
             const data = await response.json();
             setTokenAuth(data)
+            checkRole(data)
         }
         //IF THE API CANOT BE FETCHED, LETS SHOW AN ALERT WITH THE EROR THAT WE CREATE BEFORE
         catch (error) {
