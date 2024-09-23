@@ -1,10 +1,11 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 export const Form = () => {
 
     const navigate = useNavigate()
+    const { tableId } = useParams(); // Obtener el table_id desde la URL
 
     const [input, setInput] = useState("")
 
@@ -34,7 +35,7 @@ export const Form = () => {
                 },
                 body: JSON.stringify({
                     name: input,
-                    table_id: "f5490f82-7c74-42b1-bd14-e20a466d7f8d"
+                    table_id: tableId
                 })
             });
 

@@ -34,7 +34,7 @@ export const AppRoutes = () => {
           } />
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<ProtectedDashboard />} />
-          <Route path='/' element={<UserForm />} />
+          <Route path='/:tableId' element={<UserForm />} />
           <Route path='/sessions' element={<ProtectedSessions />} />
         </Routes>
     </TokenAuthProvider>

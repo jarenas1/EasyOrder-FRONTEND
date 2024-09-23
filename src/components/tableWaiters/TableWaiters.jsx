@@ -76,24 +76,6 @@ export const TableWaiters = () => {
                         </tr>
                     ))
                     }
-  
-                      <tr>
-                      <td>1229232asds021a</td>
-                      <td>JUAN ARENAS GAVIRIA</td>
-                      <td>
-                          <button className="edit-btn">Editar</button>
-                          <button className="delete-btn">Eliminar</button>
-                      </td>
-                      </tr>
-  
-                      <tr>
-                      <td>1229232asds021a</td>
-                      <td>JUAN ARENAS GAVIRIA</td>
-                      <td>
-                          <button className="edit-btn">Editar</button>
-                          <button className="delete-btn">Eliminar</button>
-                      </td>
-                      </tr>
                   </tbody>
               </table>
           </section>
