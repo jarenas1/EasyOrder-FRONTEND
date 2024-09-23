@@ -7,18 +7,21 @@
 
 .header {
     margin-top: 3.5vh;
+    display: flex;
+    align-items: center;
     position: relative;
     margin-bottom: 5vh;
     left: 0;
     top: 0;
     width:100% ;
-    min-height: 55vh;
+    height: 55vh;
     background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.388),
         rgba(0, 0, 0, 0.289)
         ),
         url("../../../assets/banner.jpeg") no-repeat center / cover;
+
 }
 
 .header__text{
@@ -100,7 +103,7 @@
         font-size: 12px;
     }
     .header {
-        height: 43vh;
+        height: 47vh;
     }
     
 }
@@ -109,7 +112,7 @@
 .typewriter {
     border-right: 0.1em solid transparent;
     overflow: hidden;
-    animation: blink 2s step-end ;
+    animation: blink 4s step-end ;
 }
 
 @keyframes blink {
@@ -119,7 +122,7 @@
 
 @media (max-width: 1000px) {
     .header {
-        height: 40vh;
+        height: 44vh;
     }
     .header__text{
         width: 80%;
@@ -138,7 +141,7 @@
 
 @media (max-width: 850px) {
     .header {
-        height: 31vh;
+        height: 40vh;
     }
 }
 
@@ -147,7 +150,7 @@
         font-size: 12px;
     }
     .header {
-        height: 26vh;
+        height: 37vh;
     }
 }
 
@@ -156,7 +159,7 @@
         font-size: 10px;
     }
     .header {
-        height: 20vh;
+        height: 35vh;
     }
 }
 
@@ -179,7 +182,7 @@
         font-size: 8px;
     }
     .header {
-        height: 17vh;
+        height: 29vh;
     }
     .section-products__search input{
         
