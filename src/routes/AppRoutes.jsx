@@ -20,16 +20,23 @@ const ProtectedSessions = withAuthGuard(ActiveSessions, [WAITER_ROLE]);
 export const AppRoutes = () => {
   return (
     <TokenAuthProvider>
-      <CartContextProvider>
+      
         <Routes>
-          <Route path='/products' element={<ShowProducts />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/products' element={
+            <CartContextProvider>
+              <ShowProducts />
+            </CartContextProvider>
+            } />
+          <Route path='/cart' element={
+             <CartContextProvider>
+              <Cart />
+          </CartContextProvider>
+          } />
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<ProtectedDashboard />} />
           <Route path='/' element={<UserForm />} />
           <Route path='/sessions' element={<ProtectedSessions />} />
         </Routes>
-      </CartContextProvider>
     </TokenAuthProvider>
   );
 };

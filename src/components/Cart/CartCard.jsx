@@ -8,10 +8,10 @@ function CartCard({ products }) {
             {/* Encabezado de la tabla */}
             <thead>
                 <tr>
-                    <th>Image</th>
-                    <th>Product</th>
-                    <th>Units</th>
-                    <th>Price</th>
+                    <th>Imagen</th>
+                    <th>Productos</th>
+                    <th>Unidades</th>
+                    <th>Precio</th>
                     
                 </tr>
             </thead>

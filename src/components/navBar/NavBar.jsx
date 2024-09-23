@@ -6,7 +6,7 @@ function NavBar() {
   const location = useLocation()
   let content;
   if (location.pathname == "/cart") {
-    content = <Button style = "btnn" text="Products" handlerClick={() => {
+    content = <Button style = "btnn" text="Productos" handlerClick={() => {
       navigate("/products")
     }} />}
 
