@@ -47,7 +47,7 @@ const MesasModal = ({ name = "", idWaiter = "", idTable = "", button = "", onTab
 
   const handleEditOrCreate = async (action) => {
     const url = action === "edit" 
-      ? `https://easyorder-backend-3.onrender.com/api/v1/tables/${tableId}`
+      ? `https://easyorder-backend-3.onrender.com/api/v1/tables/${tableId}/name-user`
       : `https://easyorder-backend-3.onrender.com/api/v1/tables`;
 
     const method = action === "edit" ? 'PATCH' : 'POST';

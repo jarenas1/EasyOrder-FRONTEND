@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
-import { TokenContext } from '../../../context/TokenAuth'
+import { TokenContext } from '../../../context/TokenAuth';
+import Swal from 'sweetalert2';
+
 export const LoginForm = () => {
     const {setTokenAuth} = useContext(TokenContext)
     const navigate = useNavigate()
@@ -58,7 +60,7 @@ export const LoginForm = () => {
             if (!response.ok) {  
                 const error = await response.text();
                 const errorMessage = JSON.parse(error).statusCode;
-                throw new Error(errorMessage+ ":  Credenciales incorrectas");
+                throw new Error("Credenciales incorrectas");
             }
             //If response is ok, transofrm json to js and call the function to set the data and navigate
             const data = await response.json();
@@ -67,7 +69,11 @@ export const LoginForm = () => {
         }
         //IF THE API CANOT BE FETCHED, LETS SHOW AN ALERT WITH THE EROR THAT WE CREATE BEFORE
         catch (error) {
-                alert(error)
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: error.message,
+            });
         }
         setIsLoading(false); //Retorning the loading to false because the fetch is finished
     };
