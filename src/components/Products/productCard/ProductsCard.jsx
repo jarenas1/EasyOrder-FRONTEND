@@ -19,7 +19,7 @@ function ProductsCard({ product }) {
         </figure>
         <div className='section-showProducts__body'>
             <h3>{name.toUpperCase()}</h3>
-            <p>$ {formattedPrice}</p>
+            <p>{formattedPrice}</p>
             <a href="" onClick={(e) => {
                e.preventDefault()
                 addToCart(product)

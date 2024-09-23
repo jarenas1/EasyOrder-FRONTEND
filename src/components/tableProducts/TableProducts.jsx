@@ -48,6 +48,13 @@ export const TableProducts = () => {
       return <div>Error: {errorProducts}</div>;
     }
   
+    const formatPrice = (price) => {
+      return new Intl.NumberFormat('es-CO', {
+          style: 'currency',
+          currency: 'COP'
+      }).format(price);
+  };
+
 
     return (
       <>
@@ -69,7 +76,7 @@ export const TableProducts = () => {
                           <tr key={product.id}>
                             <td><img className="img-product-table" src={product.url} alt="" /></td>
                             <td>{product.name}</td>
-                            <td>{product.price}</td>
+                            <td>{formatPrice(product.price)}</td>
                             <td>
                             <ButtonModal className = "edit-btn" id = "modalProducts" text="Editar" handleClick={() => handleEditClick( product.id, product.name, product.price, product.url, "edit")}/>
 

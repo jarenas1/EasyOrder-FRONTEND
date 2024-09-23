@@ -37,7 +37,7 @@ function CartCard({ products }) {
                         </td>
                         <td>{ele.name.toUpperCase()}</td>
                         <td>{ele.quantity}</td>
-                        <td>${formatPrice(ele.totalPrice)}</td>
+                        <td>{formatPrice(ele.totalPrice)}</td>
                         <td>
                             <button className="btn__eliminar" onClick={() => removeFromCart(ele.id)}>
                                 <i className="bi bi-x-lg"></i>
