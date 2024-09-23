@@ -1,7 +1,7 @@
-import "./footer.scss"
+import "./Footer.scss"
 export default function Footer() {
     return (
-      
+
         <>
             <footer className="footer container">
 
@@ -23,7 +23,7 @@ export default function Footer() {
                     </article>
                 </section>
             </footer>
-          
+
     </>
   )
 }

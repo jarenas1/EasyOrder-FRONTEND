@@ -1,4 +1,4 @@
-import '../tableMesas/MesasModal.scss'
+import '../tableMesas/mesasModal.scss'
 
 export const ProductsModal = () => {
   return (
@@ -19,7 +19,7 @@ export const ProductsModal = () => {
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                   <button type="button" class="btn btn-success">Guardar</button>
                 </div>
-                
+
             </form>
           </div>
         </div>
