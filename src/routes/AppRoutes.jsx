@@ -1,5 +1,4 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom'
 import ShowProducts from '../pages/User/products/Products'
 import Cart from '../pages/User/cart/Cart'
 import CartContextProvider from '../context/CartContext';
@@ -37,6 +36,7 @@ export const AppRoutes = () => {
           <Route path='/dashboard' element={<ProtectedDashboard />} />
           <Route path='/:tableId' element={<UserForm />} />
           <Route path='/sessions' element={<ProtectedSessions />} />
+          <Route path='/*' element={<Navigate to="/login"/>}/>
         </Routes>
     </TokenAuthProvider>
   );

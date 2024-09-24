@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../tableMesas/MesasModal.scss'
+import '../tableMesas/mesasModal.scss'
 import Swal from 'sweetalert2';
 
 export const ProductsModal = ({ name = "", url = "", price = "",  idProduct = "",button = "", onProductUpdate }) => {
@@ -8,7 +8,7 @@ export const ProductsModal = ({ name = "", url = "", price = "",  idProduct = ""
     const [urlImg, setUrlImg] = useState(url);
     const [priceProduct, setPriceProduct] = useState(price);
     const [action, setAction] = useState(button);
-  
+
     useEffect(() => {
       setProduct(name);
       setProductId(idProduct);
@@ -16,7 +16,7 @@ export const ProductsModal = ({ name = "", url = "", price = "",  idProduct = ""
       setPriceProduct(price)
       setAction(button);
     }, [name, idProduct, url, price, button]);
-  
+
     const setInputValue = (e) => {
       switch (e.target.name) {
         case 'url':
@@ -26,16 +26,16 @@ export const ProductsModal = ({ name = "", url = "", price = "",  idProduct = ""
           setProduct(e.target.value);
           break;
         case 'price':
-          setPriceProduct(Number(e.target.value)); 
+          setPriceProduct(Number(e.target.value));
           break;
         default:
           return;
       }
     };
-  
+
     useEffect(() => {
       const modalElement = document.getElementById('modalProducts');
-      
+
       const resetModal = () => {
         setProduct("");
         setProductId("");
@@ -43,21 +43,21 @@ export const ProductsModal = ({ name = "", url = "", price = "",  idProduct = ""
         setAction("");
         setPriceProduct("");
       };
-  
+
       modalElement.addEventListener('hidden.bs.modal', resetModal);
-  
+
       return () => {
         modalElement.removeEventListener('hidden.bs.modal', resetModal);
       };
     }, []);
-  
+
     const handleEditOrCreate = async (action) => {
-      const url = action === "edit" 
+      const url = action === "edit"
         ? `https://easyorder-backend-3.onrender.com/api/v1/products/${productId}`
         : `https://easyorder-backend-3.onrender.com/api/v1/products`;
-  
+
       const method = action === "edit" ? 'PATCH' : 'POST';
-  
+
       try {
         const response = await fetch(url, {
           method: method,
@@ -68,24 +68,24 @@ export const ProductsModal = ({ name = "", url = "", price = "",  idProduct = ""
           body: JSON.stringify({
             url: urlImg,
             name: product,
-            price: priceProduct           
-            
+            price: priceProduct
+
           })
         });
-  
+
         if (!response.ok) {
           throw new Error('La respuesta de la red no fue satisfactoria');
         }
-  
+
         const data = await response.json();
         console.log(data);
-  
+
         Swal.fire({
           title: "¡Éxito!",
           text: `Producto ${action === "edit" ? "actualizado" : "creado"} correctamente.`,
           icon: "success",
         });
-  
+
         if (onProductUpdate) {
           onProductUpdate();
         }
@@ -97,7 +97,7 @@ export const ProductsModal = ({ name = "", url = "", price = "",  idProduct = ""
           icon: "error",
         });
       }
-    };  
+    };
 
   return (
     <>
@@ -117,7 +117,7 @@ export const ProductsModal = ({ name = "", url = "", price = "",  idProduct = ""
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                   <button type="button" className="btn btn-success" data-bs-dismiss="modal" aria-label="Close" onClick={() => handleEditOrCreate(action)}>Guardar</button>
                 </div>
-                
+
             </form>
           </div>
         </div>

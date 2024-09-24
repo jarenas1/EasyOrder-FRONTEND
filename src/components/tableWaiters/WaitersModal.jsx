@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../tableMesas/MesasModal.scss'
+import '../tableMesas/mesasModal.scss'
 import Swal from 'sweetalert2';
 
 export const WaitersModal = ({id = "",name = "", lastname = "", username = "", password = "", button = "", onWaiterUpdate}) => {
@@ -9,7 +9,7 @@ export const WaitersModal = ({id = "",name = "", lastname = "", username = "", p
     const [waiterUsername, setWaiterUsername] = useState(username);
     const [waiterPassword, setWaiterPassword] = useState(password);
     const [action, setAction] = useState(button);
-  
+
     useEffect(() => {
       setWaiterName(name);
       setWaiterId(id);
@@ -18,7 +18,7 @@ export const WaitersModal = ({id = "",name = "", lastname = "", username = "", p
       setWaiterPassword(password);
       setAction(button);
     }, [name, id, lastname, username, password, button]);
-  
+
     const setInputValue = (e) => {
       switch (e.target.name) {
         case 'name':
@@ -28,19 +28,19 @@ export const WaitersModal = ({id = "",name = "", lastname = "", username = "", p
           setWaiterLatname(e.target.value);
           break;
         case 'username':
-          setWaiterUsername(e.target.value); 
+          setWaiterUsername(e.target.value);
           break;
         case 'password':
-          setWaiterPassword(e.target.value); 
+          setWaiterPassword(e.target.value);
           break;
         default:
           return;
       }
     };
-  
+
     useEffect(() => {
       const modalElement = document.getElementById('modalWaiters');
-      
+
       const resetModal = () => {
         setWaiterId("");
         setWaiterName("");
@@ -49,21 +49,21 @@ export const WaitersModal = ({id = "",name = "", lastname = "", username = "", p
         setWaiterUsername("");
         setAction("");
       };
-  
+
       modalElement.addEventListener('hidden.bs.modal', resetModal);
-  
+
       return () => {
         modalElement.removeEventListener('hidden.bs.modal', resetModal);
       };
     }, []);
-  
+
     const handleEditOrCreate = async (action) => {
-      const url = action === "edit" 
+      const url = action === "edit"
         ? `https://easyorder-backend-3.onrender.com/api/v1/user/${waiterId}`
         : `https://easyorder-backend-3.onrender.com/api/v1/user`;
-  
+
       const method = action === "edit" ? 'PATCH' : 'POST';
-  
+
       try {
         const response = await fetch(url, {
           method: method,
@@ -74,24 +74,24 @@ export const WaitersModal = ({id = "",name = "", lastname = "", username = "", p
           body: JSON.stringify({
             username: waiterUsername,
             name: waiterName,
-            password: waiterPassword,   
+            password: waiterPassword,
             lastname: waiterLastname,
-            role: action === "edit" ? undefined : "edddd5fe-b693-4009-8592-209aeb5668e6"         
+            role: action === "edit" ? undefined : "edddd5fe-b693-4009-8592-209aeb5668e6"
           })
         });
         if (!response.ok) {
           throw new Error('La respuesta de la red no fue satisfactoria');
         }
-  
+
         const data = await response.json();
         console.log(data);
-  
+
         Swal.fire({
           title: "¡Éxito!",
           text: `Mesero ${action === "edit" ? "actualizado" : "creado"} correctamente.`,
           icon: "success",
         });
-  
+
         if (onWaiterUpdate) {
           onWaiterUpdate();
         }
@@ -103,7 +103,7 @@ export const WaitersModal = ({id = "",name = "", lastname = "", username = "", p
           icon: "error",
         });
       }
-    };  
+    };
   return (
     <>
         <section class="modal fade" id="modalWaiters" tabindex="-1" aria-labelledby="modalWaiters" aria-hidden="true">
@@ -123,7 +123,7 @@ export const WaitersModal = ({id = "",name = "", lastname = "", username = "", p
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close" onClick={() => handleEditOrCreate(action)}>Guardar</button>
                 </div>
-                
+
             </form>
           </div>
         </div>
