@@ -7,9 +7,9 @@ import Login from '../pages/Admin/login/Login';
 import { Dashboard } from '../pages/Admin/dashboard/Dashboard';
 import { UserForm } from '../pages/User/userForm/UserForm';
 import { ActiveSessions } from '../pages/Waiter/acitveSessions/ActiveSessions';
+import {TablesWaiter} from '../pages/Waiter/tables/Tables'
 import TokenAuthProvider from '../context/TokenAuth';
-import withAuthGuard from '../components/protectedRoute/ProtectedRoute.jsx'; // Asegúrate de usar la ruta correcta
-
+import withAuthGuard from '../components/protectedRoute/ProtectedRoute.jsx';
 const ADMIN_ROLE = '3ca4d91f-4ca2-46e5-ba9c-8bd12fe0645a';
 const WAITER_ROLE = 'edddd5fe-b693-4009-8592-209aeb5668e6'
 
@@ -33,6 +33,7 @@ export const AppRoutes = () => {
           </CartContextProvider>
           } />
           <Route path='/login' element={<Login />} />
+          <Route path='/tables' element={<TablesWaiter/>} />
           <Route path='/dashboard' element={<ProtectedDashboard />} />
           <Route path='/:tableId' element={<UserForm />} />
           <Route path='/sessions' element={<ProtectedSessions />} />

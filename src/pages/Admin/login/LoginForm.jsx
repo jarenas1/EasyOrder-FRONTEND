@@ -81,7 +81,7 @@ export const LoginForm = () => {
         <>
             <form>
                 {/* <h1>{isLoading && "cargando"}</h1> */}
-                <input type="text" name="name" id="name" required placeholder="Ingresa tu email" onChange={handleInputChange}/>
+                <input type="text" name="name" id="name" required placeholder="Ingresa tu nombre de usuario" onChange={handleInputChange}/>
                 <input type="password" name="password" id="passsword" required placeholder="Ingresa tu contraseña" onChange={handleInputChange}/>
 
                 <div>
