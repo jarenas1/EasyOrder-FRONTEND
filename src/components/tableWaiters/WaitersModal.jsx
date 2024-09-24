@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../tableMesas/MesasModal.scss'
+import '../tableMesas/mesasModal.scss'
 import Swal from 'sweetalert2';
 
 export const WaitersModal = ({id = "",name = "", lastname = "", username = "", password = "", button = "", onWaiterUpdate}) => {
