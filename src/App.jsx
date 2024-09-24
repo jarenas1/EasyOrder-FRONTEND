@@ -8,6 +8,7 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
       <Router>
         <NavBar />
         <main >
@@ -15,6 +16,7 @@ function App() {
         </main>
         <Footer/>
       </Router>
+      </BrowserRouter>
     </>
   )
 }
