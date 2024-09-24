@@ -9,42 +9,34 @@ import {io} from 'socket.io-client';
 import Swal from 'sweetalert2';
 
 
+
 export const TableOrders = () => {
   const [notificacion, setNotificacion] = useState(false)
   const [mesanotificacion, setMesaNotificacion] = useState('')
   const [newData, setNewData] = useState([])
+  const [status, setStatus] = useState('')
+  const [selectedSession, setSelectedSession] = useState([]);
 
-  const sessions = fetch("https://easyorder-backend-3.onrender.com/api/v1/sessions", {
-    method: 'GET',
-    headers: {
-  'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
-  'Content-Type': 'application/json',
-   },
-  });
+  const sessionData = async() => {
+    let sessions = await fetch("https://easyorder-backend-3.onrender.com/api/v1/sessions", {
+      method: 'GET',
+      headers: {
+    'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
+    'Content-Type': 'application/json',
+     },
+    });
+    setNewData(await sessions.json())
+  }
+
 
   useEffect(() => {
-    async function data() {
-      let sessions = await fetch("https://easyorder-backend-3.onrender.com/api/v1/sessions", {
-        method: 'GET',
-        headers: {
-      'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
-      'Content-Type': 'application/json',
-       },
-      });
-      setNewData(await sessions.json())
-      console.log(newData);
-      
-
-    }
-    data()
-  }, [])
+    sessionData()
+  }, [status])
 
   useEffect(() => {
     if (notificacion) {
       Swal.fire(`Nuevo pedido en la: ${mesanotificacion}`);
     }
-
-
   }, [notificacion, mesanotificacion]);
 
 
@@ -58,16 +50,20 @@ export const TableOrders = () => {
     });
 
     socket.on('request-status-change', (data) => {
-      console.log('new Request websocket');
+      setStatus(data.status)
     });
 
     socket.on('new-request', (data) => {
+      console.log(data);
+      console.log(newData);
+
+
+      setMesaNotificacion('');
 
       const mesa = newData.find((element) => element.id === data.sessionId)
       console.log(mesa);
 
       if( mesa ) {
-        setMesaNotificacion('');
         setNotificacion(true)
         setMesaNotificacion(mesa.table.name)
       }
@@ -85,15 +81,17 @@ export const TableOrders = () => {
     };
   }, []);
 
-
+  const handleShowModal = (session) => {
+    setSelectedSession(session); // Almacenar la sesión seleccionada en el estado
+  };
 
   return (
     <>
-        <OrderModal data={newData}/>
-        <table>
+      <table>
         <thead>
           <tr>
             <th>Mesa</th>
+            <th>Cuenta</th>
             <th>Pagado</th>
             <th>Acciones</th>
           </tr>
@@ -101,13 +99,13 @@ export const TableOrders = () => {
         <tbody>
           { newData && newData.length > 0 ?
             newData.map((e) =>{
-            return  <tr key={e.id}>
+            return  <tr >
                       <td>{e.table.name}</td>
                       <td>{e.name}</td>
                       <td>
                         <BtnPaid id={e.id} paid={e.paid}/>
                       </td>
-                      <td>
+                      <td onClick={() => handleShowModal(e)}>
                         <ButtonModal className={"orden-btn"} text={'Ver Orden'} id={'modalSessions'} />
                       </td>
                     </tr>}):
@@ -117,7 +115,8 @@ export const TableOrders = () => {
                       </td>
                     </tr>}
         </tbody>
-    </table>
+      </table>
+      <OrderModal data={selectedSession} status={status}/>
     </>
   )
 }
