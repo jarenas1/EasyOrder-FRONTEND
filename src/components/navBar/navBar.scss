@@ -1,0 +1,31 @@
+@import url("../../index.scss");
+.nav{
+    padding: 20px 40px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ 
+}
+
+.nav__figure{
+    
+    width: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.session-close{
+    background-color: #E01F1F;
+        margin: 20px 0px;
+        height: 45px;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.9);
+        font-size: 18px;
+        font-weight: 500;
+        padding-left: 27px;
+        padding-right: 27px;
+        transition: all 0.1s ease-in-out;
+    
+}

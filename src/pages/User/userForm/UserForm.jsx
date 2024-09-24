@@ -1,9 +1,13 @@
+import { Form } from "./FormUser"
 import "./userForm.scss"
 
 export const UserForm = () => {
   return (
     <>
-        <h1>hello world</h1>
+        <section className="form-container">
+            <h1>Bienvenido a La Logia</h1>
+                <Form/>
+        </section>
     </>
   )
 }

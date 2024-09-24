@@ -1,6 +1,49 @@
-$background-color: #1C1C1C;
-$button-color: #E01F1F;
-$button-yellow:#D5D824;
-$button-blue: #064AF8;
-$font-color: #FFFF;
-$light-gray: #D9D9D9
+.section-cart h2{
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    padding-bottom: 40px;
+
+
+}
+.section-cart a{
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    
+    
+}
+.section-cart__btn{
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+}
+.btn-pedir{
+    background-color: green;
+    padding: 10px;
+    max-width:200px ;
+    margin: 0 auto;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.1s ease-in-out;
+    color: #d9d9d9;
+
+}
+
+.btn-pedir:hover{
+    transform: scale(1.05);
+    
+
+
+}
+
+.serctio-card-container__titles{
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+}
+
+.serctio-card-container__titles p{
+    flex: 0 0 100px;
+}

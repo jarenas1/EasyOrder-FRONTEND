@@ -1,0 +1,11 @@
+.section-showProducts{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    padding: 60px 0 ;
+    max-width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
