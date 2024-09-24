@@ -17,7 +17,11 @@ function NavBar() {
         localStorage.removeItem("userData")
       }}>Cerrar sesion</button>}
     
-    
+    if(location.pathname =="/tables"){
+      content = <Button style = "btnn" text="Pedidos" handlerClick={() => {
+        navigate("/sessions")
+      }} />
+    }
   return (
       <nav className='nav'>
           <figure className='nav__figure'>

@@ -20,6 +20,6 @@ export const BtnPaid = ({id,paid}) => {
     }
 
   return (
-    <button onClick={patchPaid}>{`Pagado`}</button>
+    <button className='btn btn-success' onClick={patchPaid}>{`Pagado`}</button>
   )
 }
