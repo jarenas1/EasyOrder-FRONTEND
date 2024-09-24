@@ -1,12 +1,21 @@
 import {Routes, Route, Navigate} from 'react-router-dom'
 import ShowProducts from '../pages/User/products/Products'
 import Cart from '../pages/User/cart/Cart'
-import CartContextProvider from '../context/CartContext'
-import Login from '../pages/Admin/login/Login'
-import { Dashboard } from '../pages/Admin/dashboard/Dashboard'
-import { UserForm } from '../pages/User/userForm/UserForm'
-import { ActiveSessions } from '../pages/Waiter/acitveSessions/ActiveSessions'
-import TokenAuthProvider from '../context/TokenAuth'
+import CartContextProvider from '../context/CartContext';
+import Login from '../pages/Admin/login/Login';
+import { Dashboard } from '../pages/Admin/dashboard/Dashboard';
+import { UserForm } from '../pages/User/userForm/UserForm';
+import { ActiveSessions } from '../pages/Waiter/acitveSessions/ActiveSessions';
+import TokenAuthProvider from '../context/TokenAuth';
+import withAuthGuard from '../components/protectedRoute/ProtectedRoute.jsx'; // Asegúrate de usar la ruta correcta
+
+const ADMIN_ROLE = '3ca4d91f-4ca2-46e5-ba9c-8bd12fe0645a';
+const WAITER_ROLE = 'edddd5fe-b693-4009-8592-209aeb5668e6'
+
+const ProtectedDashboard = withAuthGuard(Dashboard, [ADMIN_ROLE]);
+const ProtectedSessions = withAuthGuard(ActiveSessions, [WAITER_ROLE]);
+
+
 export const AppRoutes = () => {
   return (
     <TokenAuthProvider>
@@ -15,14 +24,14 @@ export const AppRoutes = () => {
           <Route path='/products' element={<ShowProducts />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/user' element={<UserForm />} />
-          <Route path='/sessions' element={<ActiveSessions />} />
-          <Route path='/*' element={<Navigate to='/login' />} />
+          <Route path='/dashboard' element={<ProtectedDashboard />} />
+          <Route path='/' element={<UserForm />} />
+          <Route path='/sessions' element={<ProtectedSessions />} />
+          <Route path='/*' element={<Navigate to="/login"/>}/>
         </Routes>
       </CartContextProvider>
     </TokenAuthProvider>
-  )
-}
+  );
+};
 
-
+export default AppRoutes;

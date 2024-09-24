@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { ToggleButtonOrders } from '../toggleButton/ToggleButtonOrders'
+import { io } from 'socket.io-client'
 
 export const OrderModal = ({data}) => {
+  const [products, setProducts] = useState([])
+
+
+  useEffect( () => {
+    async function data() {const data = await fetch("https://easyorder-backend-3.onrender.com/api/v1/products")
+    const fetchProducts = await data.json()
+    setProducts(fetchProducts)}
+    data()
+  }, [data])
+
+
+
+
   return (
     <section className="modal fade" id="modalSessions" tabIndex="-1" aria-labelledby="modalSessions" aria-hidden="true">
       <article className="modal-dialog">
@@ -11,8 +26,32 @@ export const OrderModal = ({data}) => {
           </div>
           <div className="modal-body">
             <table>
+              <thead>
+              <tr>
+                <th>Pedido</th>
+                <th>Cantidad</th>
+                <th>Producto</th>
+                <th>Acciones</th>
+              </tr>
+              </thead>
             <tbody>
-                {data.map((e) => <td>{e.name}</td>)}
+                {data.length > 0 ? data.map((e) => e.requests.map((element) => {
+                  if(element.status !== "Terminado") {
+                    return <tr>
+                            <td>{e.name}</td>
+                            <td>
+                              {element.quantity}
+                            </td>
+                            <td>
+                              {products.find((item) => item.id === element.productId).name}
+                            </td>
+                            <td>
+                              <ToggleButtonOrders id={element.id} reqStatus={element.status}/>
+                            </td>
+                         </tr>
+                  }
+                  }
+                )): ""}
             </tbody>
             </table>
           </div>

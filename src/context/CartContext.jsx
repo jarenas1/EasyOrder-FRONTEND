@@ -1,8 +1,16 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 export const CartContext = createContext()
 export function CartContextProvider(props) {
-    
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+        // Cargar el carrito desde localStorage si existe
+        const savedCart = localStorage.getItem('cart');
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+
+    useEffect(() => {
+        // Guardar el carrito en localStorage cada vez que cambie
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, [cart]);
 
   const addToCart = (product) => {
     setCart(prevCart => {
@@ -29,6 +37,7 @@ export function CartContextProvider(props) {
   return (
       <CartContext.Provider value={{
           cart,
+          setCart,
           addToCart,
           removeFromCart
       }}>

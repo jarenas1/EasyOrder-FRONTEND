@@ -9,7 +9,7 @@ function ProductsCard({ product }) {
   return (
     <article className='section-showProducts__article'>
         <figure className='section-showProducts__figure'>
-            <img src={url} alt="" />
+            <img src={url} alt=" Product Image" />
         </figure>
         <div className='section-showProducts__body'>
             <h3>{name.toUpperCase()}</h3>

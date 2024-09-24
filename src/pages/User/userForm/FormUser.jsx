@@ -5,10 +5,10 @@ import Swal from 'sweetalert2';
 export const Form = () => {
 
     const navigate = useNavigate()
-//ESTADO DE LA SESION INICIADA
+
     const [input, setInput] = useState("")
 
-    //SE VA LLENANDO EL INPUT
+    
     const onInputChange = ({target}) => {
         setInput(target.value)
     }
@@ -34,12 +34,12 @@ export const Form = () => {
                 },
                 body: JSON.stringify({
                     name: input,
-                    table_id: "f743890b-b2e0-459c-8603-1ead5fc0ff4b"
+                    table_id: "f5490f82-7c74-42b1-bd14-e20a466d7f8d"
                 })
             });
 
             if (!response.ok) {
-                throw new Error("Hubo un error en el envío");
+                throw new Error("Hubo un error en el servidor");
             }
 
             const {id} = await response.json();
@@ -58,7 +58,7 @@ export const Form = () => {
   return (
     <>
         <form onSubmit={onSubmit}>
-            <input type="text" name="name" id="name" placeholder="Ingresa tu nombre" onChange={onInputChange}/>
+            <input type="text" name="name" id="name"  placeholder="Ingresa tu nombre" onChange={onInputChange}/>
             <div>
                 <button type="submit" >Cuenta individual</button>
             </div>
