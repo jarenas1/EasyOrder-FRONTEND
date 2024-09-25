@@ -19,12 +19,18 @@ body{
 
     .orders-container{
         margin-top: 10vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         h1{
             text-align: center;
             font-size: 45px;
             margin-bottom: 8vh;
         }
         article{
+            width: 100%;
             display: flex;
             justify-content: space-around;
 
@@ -85,8 +91,18 @@ body{
                         scale: 1.04;
                     }
             }
+
+            .btn-container-tabs{
+                width: 100%;
+                display: flex;
+                justify-content: start;
+            }
         
-    
+            .butt{
+                margin-bottom: 5vh;
+                margin-left: 10%;
+                
+            }
 
 
     

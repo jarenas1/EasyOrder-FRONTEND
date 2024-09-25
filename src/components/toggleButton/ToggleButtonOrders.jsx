@@ -1,17 +1,41 @@
 import { useState } from "react";
 import './toggleButton.scss'
 
-export const ToggleButtonOrders = () => {
-  const [status, setStatus] = useState('preparación');
+async function updateStatus(id, status) {
+  const fetchData = await fetch(`https://easyorder-backend-3.onrender.com/api/v1/requests/${id}/status`, {
+    method: 'PATCH',
+    headers: {
+  'Authorization': `Bearer ${localStorage.getItem('userToken')}`,
+  'Content-Type': 'application/json',
+   },
+   body: JSON.stringify({ status: status })
+  });
+  let data = await fetchData.json()
+  console.log(data);
+
+}
+
+export const ToggleButtonOrders = ({id, reqStatus}) => {
+
+  const [status, setStatus] = useState(reqStatus);
 
   // Función que cambia el estado cuando se hace clic
-  const toggleStatus = () => {    
+  const toggleStatus = () => {
+
     // Dependiendo del estado actual, cambiamos al siguiente estado
-    if (status === 'preparación') {
-      setStatus('entregado'); // Cambia de "preparación" a "entregado"
-    } else if (status === 'entregado') {
-      setStatus('finished'); // Cambia de "entregado" a "finished"
+    if (status === 'Recibido') {
+      setStatus('Preparación'); // Cambia de "Recibido" a "entregado"
+      updateStatus(id, 'Preparación')
+
+    } else if (status === 'Preparación') {
+      setStatus('Entregado'); // Cambia de "entregado" a "Entregado"
+      updateStatus(id, 'Entregado')
+
+    } else if (status === 'Entregado'){
+      setStatus('Terminado')
+      updateStatus(id, 'Terminado')
     }
+
   };
 
   return (
@@ -19,11 +43,11 @@ export const ToggleButtonOrders = () => {
     <button
       onClick={toggleStatus}
       style={{
-        backgroundColor: status === 'preparación' ? '#FFC107' : (status === 'entregado' ? '#198754' : 'blue'),
-        color: status === 'preparación' ? 'black' : (status === 'entregado' ? 'white' : 'blue'),
-      }} className='button-toggle'
+        backgroundColor: status === 'Recibido' ? '#FFC107' : (status === 'Preparación' ? '#198754' : 'blue'),
+        color: status === 'Recibido' ? 'black' : (status === 'Preparación' ? 'white' : 'black'),
+      }} className='button-togglee'
     >
-      {status === 'preparación' ? 'Marcar en preparacion' : (status === 'entregado' ? 'Marcar Entregado' : 'Finished')}
+      {status === 'Recibido' ? 'Marcar en Preparación' : (status === 'Preparación' ? 'Marcar Entregado' : 'Terminado')}
     </button>
     </>
   );
