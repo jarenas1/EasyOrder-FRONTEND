@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { ToggleButtonOrders } from '../toggleButton/ToggleButtonOrders'
 
 
-export const OrderModal = ({data}) => {
+export const OrderModal = ({data, setstatus}) => {
   const [products, setProducts] = useState([])
   const [list, setlist] = useState({requests: []})
 
   useEffect(() => {
-    console.log("esto es o no");
-
     setlist(data)
   }, [data])
 
@@ -20,7 +18,7 @@ export const OrderModal = ({data}) => {
     setProducts(fetchProducts)}
 
     data()
-  }, [data])
+  }, [])
 
 
 
@@ -73,7 +71,7 @@ export const OrderModal = ({data}) => {
                                 <td>
                                   {products.find((item) => item.id === element.productId).name}
                                 </td>
-                                <td>
+                                <td onClick={setstatus(element.status)}>
                                   <ToggleButtonOrders id={element.id} reqStatus={element.status}/>
                                 </td>
                               </tr>
