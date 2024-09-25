@@ -20,7 +20,8 @@
         rgba(0, 0, 0, 0.388),
         rgba(0, 0, 0, 0.289)
         ),
-        url("../../../assets/banner.jpeg") no-repeat center / cover;
+        url("../../../assets/bannerBig.jpg") no-repeat center / cover;
+        background-attachment: fixed;
 
 }
 
@@ -182,6 +183,15 @@
 
 
 @media (max-width: 400px) {
+    .header__text{
+   
+        width: 80%;
+    }
+    
+    .header__text h1{
+        font-size: 4rem;
+    
+    }
     html{
         font-size: 8px;
     }
@@ -193,6 +203,12 @@
        
         max-width: 100%;
         
+    }
+
+    .section-products__btn i{
+        font-size: 35px;
+    
+    
     }
     
 }
