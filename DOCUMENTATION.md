@@ -24,14 +24,59 @@ Nightclub management solution through an innovative SaaS platform, offering real
 ---
 
 ## Team Members
-- **Member 1**: [Email](mailto:member1@example.com) | [LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com)
-- **Member 2**: [Email](mailto:member2@example.com) | [LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com)
-- **Member 3**: [Email](mailto:member3@example.com) | [LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com)
-- **Member 4**: [Email](mailto:member4@example.com) | [LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com)
+- **Juan José Arenas**: [Email](mailto:juanjoarenas1218@gmail.com) | [LinkedIn](www.linkedin.com/in/juan-josé-arenas-gaviria-144b79249) | [GitHub](https://github.com/jarenas1)
+- **Diego Jaramillo**: [Email](97jaramillo@gmail.com) | [LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com/diego97jaramillo)
+- **Luis Rubio**: [Email](mailto:member3@example.com) | [LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com/luisruro)
+- **Juan Tuiran**: [Email](mailto:member4@example.com) | [LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com/PJuanTuiran)
 
 ---
 
-## Project Architecture
+## Front-End Architecture
+
+### Overview
+The front-end of EasyOrder is designed to provide an intuitive and responsive user interface that enhances the ordering experience for nightclub patrons. The architecture is built using modern web technologies to ensure optimal performance and maintainability.
+
+### Tech Stack
+- **Framework**: React
+- **State Management**: Redux or Context API
+- **Styling**: SCSS for modular and maintainable styles
+- **Routing**: React Router for handling navigation
+- **API Interaction**: Axios for making HTTP requests to the backend
+- **Internationalization**: i18next for supporting multiple languages
+- **Build Tool**: Vite for fast development and build processes
+
+### Folder Structure
+/src
+|-- /components        # Reusable UI components
+|-- /pages             # Page components for routing
+|-- /redux             # Redux store and slices (if using Redux)
+|-- /hooks             # Custom hooks for managing state and side effects
+|-- /styles            # SCSS files for styling
+|-- /utils             # Utility functions
+|-- /assets            # Images and other static assets
+|-- App.js             # Main application component
+|-- index.js           # Entry point of the application
+
+
+### Component Design
+- **Reusable Components**: Design components to be reusable across different parts of the application (e.g., buttons, input fields, cards).
+- **Presentational vs. Container Components**: Separate presentational components (UI) from container components (logic and state management) to maintain a clear architecture.
+
+### Routing
+- Utilize React Router for navigating between pages:
+  - **Public Routes**: Accessible to all users (e.g., login, registration).
+  - **Protected Routes**: Accessible only to authenticated users (e.g., order page, admin dashboard).
+
+### State Management
+- Context API to manage application state:
+  - Centralize state management to avoid prop drilling and improve state handling across components.
+
+### API Communication
+- Use Fetch for API calls to the backend:
+  - Create a service layer to handle API requests, which will encapsulate all the logic for interacting with the backend.
+
+
+## Back-End Architecture
 
 ### UML Diagrams
 ![UML Diagram](link-to-image)
