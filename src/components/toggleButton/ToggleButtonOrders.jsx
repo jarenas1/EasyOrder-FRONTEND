@@ -45,7 +45,7 @@ export const ToggleButtonOrders = ({id, reqStatus}) => {
       style={{
         backgroundColor: status === 'Recibido' ? '#FFC107' : (status === 'Preparación' ? '#198754' : 'blue'),
         color: status === 'Recibido' ? 'black' : (status === 'Preparación' ? 'white' : 'black'),
-      }} className='button-toggle'
+      }} className='button-togglee'
     >
       {status === 'Recibido' ? 'Marcar en Preparación' : (status === 'Preparación' ? 'Marcar Entregado' : 'Terminado')}
     </button>
