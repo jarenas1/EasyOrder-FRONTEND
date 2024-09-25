@@ -7,8 +7,6 @@ export const OrderModal = ({data}) => {
   const [list, setlist] = useState({requests: []})
 
   useEffect(() => {
-    console.log("esto es o no");
-
     setlist(data)
   }, [data])
 

@@ -1,6 +1,5 @@
 
-import { useEffect, useState } from 'react';
-import useFetch from '../../api/apiFetch';
+import { useEffect, useRef, useState } from 'react';
 import { BtnPaid } from '../btnPaid/BtnPaid';
 import { ButtonModal } from '../ButtonCreateModal/ButtonModal';
 import { OrderModal } from './OrderModal';
@@ -11,11 +10,10 @@ import Swal from 'sweetalert2';
 
 
 export const TableOrders = () => {
-  const [notificacion, setNotificacion] = useState(false)
-  const [mesanotificacion, setMesaNotificacion] = useState('')
   const [newData, setNewData] = useState([])
-  const [status, setStatus] = useState('')
   const [selectedSession, setSelectedSession] = useState([]);
+  const [paid, setPaid] = useState(0)
+  const [notification, setNotification] = useState();
 
   const sessionData = async() => {
     let sessions = await fetch("https://easyorder-backend-3.onrender.com/api/v1/sessions", {
@@ -25,20 +23,22 @@ export const TableOrders = () => {
     'Content-Type': 'application/json',
      },
     });
-    setNewData(await sessions.json())
+    const data = await sessions.json()
+
+    const paidData = data.filter((e) => e.paid === false)
+    setNewData(paidData)
   }
 
+  const newDataRef = useRef(newData);
+  newDataRef.current = newData;
+
+  const actualizarSessions = (pago) => {
+    setPaid(pago)
+  }
 
   useEffect(() => {
     sessionData()
-  }, [status])
-
-  useEffect(() => {
-    if (notificacion) {
-      Swal.fire(`Nuevo pedido en la: ${mesanotificacion}`);
-    }
-  }, [notificacion, mesanotificacion]);
-
+  }, [selectedSession, paid, notification])
 
 
   useEffect(() => {
@@ -50,23 +50,20 @@ export const TableOrders = () => {
     });
 
     socket.on('request-status-change', (data) => {
-      setStatus(data.status)
+      const session = newDataRef.current.find((e) => data.sessionId === e.id)
+      if(data.status === 'Terminado') {
+        setSelectedSession(session)
+      }
     });
 
     socket.on('new-request', (data) => {
+      setNotification(data.id)
       console.log(data);
-      console.log(newData);
+      console.log(newDataRef);
 
+      const obj = newDataRef.current.find((e) => data.sessionId === e.id)
 
-      setMesaNotificacion('');
-
-      const mesa = newData.find((element) => element.id === data.sessionId)
-      console.log(mesa);
-
-      if( mesa ) {
-        setNotificacion(true)
-        setMesaNotificacion(mesa.table.name)
-      }
+      Swal.fire(`Nuevo pedido en la: ${obj.name? obj.name: "que pasa"}`)
 
     });
 
@@ -76,7 +73,7 @@ export const TableOrders = () => {
 
     return () => {
       socket.off('connect');
-      socket.off('spaceStatusUpdated');
+      socket.off('request-status-change');
       socket.off('disconnect');
     };
   }, []);
@@ -102,7 +99,7 @@ export const TableOrders = () => {
             return  <tr >
                       <td>{e.table.name}</td>
                       <td>{e.name}</td>
-                      <td>
+                      <td onClick={() => actualizarSessions(!paid)}>
                         <BtnPaid id={e.id} paid={e.paid}/>
                       </td>
                       <td onClick={() => handleShowModal(e)}>
@@ -116,7 +113,7 @@ export const TableOrders = () => {
                     </tr>}
         </tbody>
       </table>
-      <OrderModal data={selectedSession} status={status}/>
+      <OrderModal data={selectedSession} />
     </>
   )
 }
