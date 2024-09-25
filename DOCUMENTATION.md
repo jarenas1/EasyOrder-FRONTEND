@@ -47,7 +47,7 @@ The front-end of EasyOrder is designed to provide an intuitive and responsive us
 
 ### Folder Structure
 
-  ![Structure](blob:https://web.whatsapp.com/3561d635-63ad-4c5e-99ee-a5f717891e7a)
+  ![Structure](https://web.whatsapp.com/3561d635-63ad-4c5e-99ee-a5f717891e7a)
 
 ### Component Design
 - **Reusable Components**: Design components to be reusable across different parts of the application (e.g., buttons, input fields, cards).
