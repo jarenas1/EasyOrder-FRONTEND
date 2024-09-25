@@ -56,5 +56,6 @@ To contribute, please follow these steps:
 ## License
 This project is licensed under the MIT License.
 
-## Project Description
-For more details about the project and the final product, see the Project Description file.
+## Project Documentation
+
+For detailed documentation on the EasyOrder project, please refer to [DOCUMENTATION.md](./DOCUMENTATION.md).
