@@ -321,4 +321,4 @@ The front-end of EasyOrder is designed to provide an intuitive and responsive us
 
 ## Project Management
 
-You can track the development progress and assigned tasks via our [Project Management Board](https://jarenas1.atlassian.net/jira/software/c/projects/HU/boards/3?useStoredSettings=true).  |||||||||      [Project Management Board2](https://jarenas1.atlassian.net/jira/software/c/projects/HU/boards/3?useStoredSettings=true).
+You can track the development progress and assigned tasks via our [Project Management Board](https://jarenas1.atlassian.net/jira/software/c/projects/HU/boards/3?useStoredSettings=true). 
