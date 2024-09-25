@@ -14,6 +14,7 @@ export const TableOrders = () => {
   const [selectedSession, setSelectedSession] = useState([]);
   const [paid, setPaid] = useState(0)
   const [notification, setNotification] = useState();
+  const [status, setStatus] = useState()
 
   const sessionData = async() => {
     let sessions = await fetch("https://easyorder-backend-3.onrender.com/api/v1/sessions", {
@@ -38,7 +39,7 @@ export const TableOrders = () => {
 
   useEffect(() => {
     sessionData()
-  }, [selectedSession, paid, notification])
+  }, [selectedSession,  status, paid, notification])
 
 
   useEffect(() => {
@@ -51,7 +52,7 @@ export const TableOrders = () => {
 
     socket.on('request-status-change', (data) => {
       const session = newDataRef.current.find((e) => data.sessionId === e.id)
-      if(data.status === 'Terminado') {
+      if(session) {
         setSelectedSession(session)
       }
     });
@@ -113,7 +114,7 @@ export const TableOrders = () => {
                     </tr>}
         </tbody>
       </table>
-      <OrderModal data={selectedSession} />
+      <OrderModal data={selectedSession} setstatus={setStatus}/>
     </>
   )
 }
