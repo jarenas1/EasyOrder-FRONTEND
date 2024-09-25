@@ -11,8 +11,10 @@ export const ActiveSessions = () => {
   return (
     <>
       <section className='orders-container'>
-      <button className='btn btn-success butt' onClick={()=>{navigate("/tables")}}>Ver mesas</button>
         <h1>Pedidos</h1>
+        <div className='btn-container-tabs'>
+        <button className='btn btn-success butt' onClick={()=>{navigate("/tables")}}>Ver mesas</button>
+        </div>
         <article>
             <TableOrders/>
         </article>
