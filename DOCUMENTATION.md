@@ -46,17 +46,8 @@ The front-end of EasyOrder is designed to provide an intuitive and responsive us
 - **Build Tool**: Vite for fast development and build processes
 
 ### Folder Structure
-/src
-|-- /components        # Reusable UI components
-|-- /pages             # Page components for routing
-|-- /redux             # Redux store and slices (if using Redux)
-|-- /hooks             # Custom hooks for managing state and side effects
-|-- /styles            # SCSS files for styling
-|-- /utils             # Utility functions
-|-- /assets            # Images and other static assets
-|-- App.js             # Main application component
-|-- index.js           # Entry point of the application
 
+  ![Structure](blob:https://web.whatsapp.com/3561d635-63ad-4c5e-99ee-a5f717891e7a)
 
 ### Component Design
 - **Reusable Components**: Design components to be reusable across different parts of the application (e.g., buttons, input fields, cards).
@@ -78,19 +69,12 @@ The front-end of EasyOrder is designed to provide an intuitive and responsive us
 
 ## Back-End Architecture
 
-### UML Diagrams
-![UML Diagram](link-to-image)
-
 ### Design and Models
 - **Database Model**:  
-  ![Database Model](link-to-image)
+  ![Database Model](blob:https://web.whatsapp.com/e9ad1c39-dfc2-4f12-96a9-206e1b2b73cd)
   
 - **Class Models**:  
-  ![Class Model](link-to-image)
-
-- **Component Architecture**:  
-  ![Component Architecture](link-to-image)
-
+  ![Class Model](blob:https://web.whatsapp.com/e29d8acb-8c32-4b2f-9858-c9825dab660d)
 ---
 
 ## Use Cases
