@@ -32,7 +32,7 @@ EasyOrder is a SaaS solution for nightclub management, allowing users to scan QR
     npm run start
     ```
 
-5. Open your browser and navigate to `http://localhost:3000` to access the application.
+5. Open your browser and navigate to `http://localhost:5173` to access the application.
 
 ## Environment Variables
 You can configure environment variables in the `.env` file as needed. For example:
